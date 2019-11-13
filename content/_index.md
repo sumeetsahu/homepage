@@ -9,4 +9,4 @@ outputs:
 - rss
 - json
 ---
-<p>Proven Software Platform Engineer with experience leveraging agile, DevOps, and CI/CD to manage large scale distributed platforms both on prem and in public cloud.</p>
+<p>Software Engineer with experience in implementing architectural changes, adopting new technologies, creating proof-of-concept, influencing product requirement, implementing and reviewing changes, and mentoring team to implement best practices and improving engineering efficiency.</p>

@@ -1,15 +1,19 @@
 [
     {
-        "school":"Rochester Institute of Technology",
-        "degree":"Bachelor of Science",
-        "major":"Management Information Systems",
-        "notes":"Beta Gamma Signma, High Honors",
-        "range":"2006 - 2008"
+        "school":"National Institute of Technology Karnataka",
+        "degree":"Bachelor of Technology",
+        "major":"Electronics and Communication",
+        "range":"2003 - 2007"
     },
     {
-        "school":"Clinton Community College",
-        "degree":"Associate of Applied Science",
-        "major":"Computer Information Systems",
-        "range":"2004 - 2006"
+        "school":"Kendriya Vidyalaya, Dimapur",
+        "degree":"All India Senior School Certificate Examination",
+        "major":"Science",
+        "range":"2001 - 2003"
+    },
+    {
+        "school":"Kendriya Vidyalaya, Bokajan",
+        "degree":"All India Secondary School Examination",
+        "range":"1999 - 2001"
     }
 ]
