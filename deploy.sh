@@ -1,6 +1,7 @@
 #!/bin/bash
 echo -e "\033[0;Copying img folder to public...\033[0m"
 rsync --progress -r -u img/* public/img
+rsync --progress -r -u *.ico public
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 cd public
