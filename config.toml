@@ -20,7 +20,7 @@ theme = "hugo-resume"
     showPublications = false
     showExperience = true
     showEducation = true
-    showQr = true
+    showQr = false
 
 [[params.handles]]
     name = "Facebook"
