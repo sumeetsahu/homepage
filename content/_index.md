@@ -9,4 +9,4 @@ outputs:
 - rss
 - json
 ---
-<p>Software Engineer with experience in implementing architectural changes, adopting new technologies, creating proof-of-concept, influencing product requirement, implementing and reviewing changes, and mentoring team to implement best practices and improving engineering efficiency.</p>
+<p>Software Engineer with experience in proposing and implementing architectural changes, adopting new technologies, creating proof-of-concept, influencing product requirements, implementing and reviewing changes, and mentoring team to implement best practices and improving engineering efficiency.</p>
