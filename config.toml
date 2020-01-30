@@ -11,7 +11,7 @@ theme = "hugo-resume"
     contactNote = "Computer Scientist at Adobe"
     profileImage = "img/homepage_profile.jpg"
     email = "contactme@sumeetsahu.com"
-    description = "Software Engineer with experience implementing architectural changes, adopting new technologies, creating proof-of-concept, influencing product requirements, implementing and reviewing changes, and mentoring team to implement best practices and to improve engineering efficiency."
+    description = "Software Engineer with experience in proposing and implementing architectural changes, adopting new technologies, creating proof-of-concept, influencing product requirements, implementing and reviewing changes, and mentoring team to implement best practices and improving engineering efficiency."
     favicon = "images/favicon.ico"
     # what sections
     showSkills = true
