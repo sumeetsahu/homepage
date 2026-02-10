@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Philosophy from './components/Philosophy';
 import Experience from './components/Experience';
 import Achievements from './components/Achievements';
+import EarlyInitiatives from './components/EarlyInitiatives';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -19,6 +20,7 @@ function App() {
       <Philosophy />
       <Experience experiences={experienceData as ExperienceType[]} />
       <Achievements />
+      <EarlyInitiatives />
       <Skills skills={skillsData as SkillGroup[]} />
       <Contact profile={profileData as ProfileData} />
       <Footer />

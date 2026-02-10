@@ -21,15 +21,8 @@ export default function Experience({ experiences }: ExperienceProps) {
     sortedExperiences.find(exp => exp.company.includes('myPNRstatus')),
   ].filter(Boolean) as ExperienceType[];
 
-  // Enterprise companies
-  const enterpriseExperiences = sortedExperiences.filter(exp => 
-    !exp.company.includes('myPNRstatus')
-  );
-
-  // Startup/entrepreneurial
-  const startupExperiences = sortedExperiences.filter(exp =>
-    exp.company.includes('myPNRstatus')
-  );
+  // Enterprise companies (all experiences since myPNRstatus is now featured separately)
+  const enterpriseExperiences = sortedExperiences;
 
   const getCompanyGradient = (company: string) => {
     if (company.includes('Intuit')) {
@@ -93,16 +86,6 @@ export default function Experience({ experiences }: ExperienceProps) {
               }`}
             >
               Enterprise ({enterpriseExperiences.length})
-            </button>
-            <button
-              onClick={() => setActiveTab('startup')}
-              className={`px-6 py-3 font-medium text-sm border-b-2 transition ${
-                activeTab === 'startup'
-                  ? 'border-black'
-                  : 'border-transparent hover:border-gray-300 text-gray-600'
-              }`}
-            >
-              Startup ({startupExperiences.length})
             </button>
           </div>
         </div>
@@ -255,7 +238,7 @@ export default function Experience({ experiences }: ExperienceProps) {
         {/* Enterprise Tab */}
         {activeTab === 'enterprise' && (
           <>
-            <p className="text-sm text-gray-500 mb-8">Large-scale technology companies</p>
+            <p className="text-sm text-gray-500 mb-8">Large-scale technology companies and entrepreneurial ventures</p>
             <div className="grid md:grid-cols-2 gap-6">
               {enterpriseExperiences.map((exp, index) => (
                 <div
@@ -269,47 +252,15 @@ export default function Experience({ experiences }: ExperienceProps) {
                     {isCurrentRole(exp.range) && (
                       <span className="px-2 py-1 bg-green-600 text-white text-xs rounded">Current</span>
                     )}
+                    {exp.company.includes('myPNRstatus') && (
+                      <span className="px-2 py-1 bg-purple-600 text-white text-xs rounded">Founder</span>
+                    )}
                   </div>
                   <p className="text-sm text-gray-500 mb-3">{exp.range}</p>
                   <p className="text-sm text-gray-700">{exp.role}</p>
                 </div>
               ))}
             </div>
-          </>
-        )}
-
-        {/* Startup Tab */}
-        {activeTab === 'startup' && (
-          <>
-            <p className="text-sm text-gray-500 mb-8">Entrepreneurial ventures</p>
-            {startupExperiences.map((exp, index) => (
-              <div key={index} className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-xl border border-green-200">
-                <div className="flex items-center gap-2 mb-3">
-                  <h3 className="text-2xl font-semibold">{exp.company}</h3>
-                  <span className="px-3 py-1 bg-green-600 text-white text-xs rounded-full font-medium">
-                    Founder
-                  </span>
-                </div>
-                <p className="text-sm text-gray-600 mb-4">{exp.range}</p>
-                <p className="text-gray-700 leading-relaxed mb-6">{exp.summary}</p>
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-white p-4 rounded-lg text-center">
-                    <p className="text-3xl font-bold text-green-600">600K</p>
-                    <p className="text-xs text-gray-600">Unique Users</p>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg text-center">
-                    <p className="text-3xl font-bold text-emerald-600">6</p>
-                    <p className="text-xs text-gray-600">Years Active</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-white text-gray-900 rounded text-sm">PHP</span>
-                  <span className="px-3 py-1 bg-white text-gray-900 rounded text-sm">MySQL</span>
-                  <span className="px-3 py-1 bg-white text-gray-900 rounded text-sm">SMS Gateway</span>
-                  <span className="px-3 py-1 bg-white text-gray-900 rounded text-sm">600K Users</span>
-                </div>
-              </div>
-            ))}
           </>
         )}
       </div>
