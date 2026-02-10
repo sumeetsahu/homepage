@@ -11,10 +11,6 @@
       "skills":[ "Java","Python","C#","C++","PHP","JavaScript","TypeScript"]
   },
   {
-      "grouping":"Certification",
-      "skills":[ "Certified Scrum Master"]
-  },
-  {
     "grouping":"Containers & Cloud",
       "skills":[
           {"name":"Docker","link":"https://docker.com"},
