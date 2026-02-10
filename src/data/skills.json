@@ -1,10 +1,14 @@
 [
   {
+      "grouping":"GenAI & AI Technologies",
+      "skills":[ "Claude (Anthropic)","ChatGPT (OpenAI)","Code Generation","AI-Driven Automation","Prompt Engineering","LLM Integration"]
+  },
+  {
       "grouping":"Architecture",
-      "skills":[ "Event Driven Architecture","Server-less Architecture","Microservice-based Architecture","RESTful APIs","SaaS/PaaS/IaaS"]
+      "skills":[ "Event Driven Architecture","Server-less Architecture","Microservice-based Architecture","RESTful APIs","SaaS/PaaS/IaaS","Distributed Systems"]
   },{
       "grouping":"Languages, Operating Systems & Tools",
-      "skills":[ "Java","C#","C++","PHP","jQuery"]
+      "skills":[ "Java","Python","C#","C++","PHP","JavaScript","TypeScript"]
   },
   {
       "grouping":"Certification",
@@ -16,7 +20,7 @@
           {"name":"Docker","link":"https://docker.com"},
           {"name":"AWS","link":"https://aws.amazon.com"},
           {"name":"Azure","link":"https://azure.microsoft.com/"},
-          {"name":"OpenWhisk","link":"https://openwhisk.apache.org/"}
+          {"name":"Apache Beam","link":"https://beam.apache.org/"}
       ]
   }
 ]

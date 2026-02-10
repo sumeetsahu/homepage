@@ -9,7 +9,7 @@ export default function Header({ profile }: HeaderProps) {
     <section className="py-20 px-6 border-b">
       <div className="container mx-auto max-w-6xl">
         <div className="max-w-4xl">
-          <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">Software Engineer</p>
+          <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">Principal Engineer</p>
           <h1 className="text-6xl md:text-7xl font-light mb-6 leading-tight">
             Sumeet<br/>
             <span className="font-semibold">Sahu</span>
@@ -19,16 +19,16 @@ export default function Header({ profile }: HeaderProps) {
           </p>
           <div className="grid grid-cols-3 gap-6 max-w-xl mb-8">
             <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <p className="text-3xl font-semibold mb-1">1.5B</p>
-              <p className="text-xs text-gray-600 uppercase tracking-wide">TXN/Day</p>
-            </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <p className="text-3xl font-semibold mb-1">15K</p>
-              <p className="text-xs text-gray-600 uppercase tracking-wide">TPS</p>
-            </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <p className="text-3xl font-semibold mb-1">15+</p>
+              <p className="text-3xl font-semibold mb-1">17+</p>
               <p className="text-xs text-gray-600 uppercase tracking-wide">Years</p>
+            </div>
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
+              <p className="text-3xl font-semibold mb-1">8K+</p>
+              <p className="text-xs text-gray-600 uppercase tracking-wide">Developers</p>
+            </div>
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
+              <p className="text-3xl font-semibold mb-1">$600K+</p>
+              <p className="text-xs text-gray-600 uppercase tracking-wide">Savings</p>
             </div>
           </div>
           <div className="flex gap-4">
