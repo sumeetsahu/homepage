@@ -1,0 +1,44 @@
+[
+    {
+        "role": "Principal Engineer",
+        "company": "Intuit - Bangalore",
+        "summary": "Pioneered transformative GenAI-driven code generation initiative for 8,000+ developers, fundamentally re-engineering the software development lifecycle. Architected and deployed cutting-edge AI solutions and automated workflows, achieving 50% productivity boost and drastically reducing time-to-market. Lead specialized team in exploring high-impact GenAI tools, fostering innovation and cross-functional excellence that has redefined developer efficiency at scale.",
+        "range": "September 2024 — Present"
+    },
+    {
+        "role": "Senior Software Development Engineer",
+        "company": "Amazon India - Bangalore",
+        "summary": "Led team of 30 SDEs developing MAARS, a mission-critical financial system for manifest ingestion, contractual accounting, and multi-billion-dollar reconciliation for Amazon Transportation. Spearheaded architectural redesign of Allocation System using Apache Beam, processing 1.5 billion daily transactions at 15,000 TPS. Migration reduced processing costs by 60%, delivering $600K in annual savings. Drove expansion of Amazon Global Mile business unit and launched ship-cost improvement platform providing actionable cost-reduction insights for leadership.",
+        "range": "February 2020 — September 2024"
+    },
+    {
+        "role": "Computer Scientist - II",
+        "company": "Adobe India - Noida",
+        "summary": "Directed full lifecycle development of Gyarados, a central asynchronous service platform for Adobe Experience Cloud (CC Home) synchronizing digital assets for millions of users. Designed and deployed highly available, secure core frameworks within multi-cloud containerized environment. Key contributions: dockerization of Windows Workers, architecture of new orchestration layer, and custom autoscaling strategies for asynchronous services optimizing performance and resource efficiency across multiple clouds.",
+        "range": "July 2016 — February 2020"
+    },
+    {
+        "role": "Computer Scientist",
+        "company": "Adobe India - Noida",
+        "summary": "Spearheaded development of PDF Scan Library SDK and PCL Print Engine, delivering high-performance solution for converting scanned documents into authentic Adobe PDFs. Engineered core functionalities including DRM protection, digital timestamping, and image cleanup, ensuring enterprise-grade security and PDF/A compliance. Managed end-to-end integration of features like watermarking and document security, providing customers with robust toolkit for professional-grade document digitization.",
+        "range": "July 2015 — June 2016"
+    },
+    {
+        "role": "Software Engineer 2",
+        "company": "Microsoft India - Hyderabad",
+        "summary": "Architected and delivered end-to-end feature areas for Bing UX, serving as technical lead for major segment-wide initiatives from concept to deployment. Collaborated closely with design and product management to champion user experience, translating complex requirements into high-performance code and scalable technical designs. Subject matter expert navigating intricate technical challenges and driving engineering excellence across the segment, ensuring seamless and responsive interface for millions of users.",
+        "range": "December 2012 — June 2015"
+    },
+    {
+        "role": "Founder and Developer",
+        "company": "myPNRstatus",
+        "summary": "Founded and scaled myPNRstatus, innovative startup and automated SMS alert service streamlining travel experience for Indian Railway passengers. Engineered system delivering real-time updates on PNR status and train delays, eliminating manual tracking. As solo founder, grew platform to 600,000 unique users through organic adoption, demonstrating ability to build and manage high-traffic, user-centric products from ground up.",
+        "range": "November 2010 — November 2016"
+    },
+    {
+        "role": "Software Engineer",
+        "company": "CA Technology - Hyderabad",
+        "summary": "Worked on EITM Software Service Desk providing Single Point of Contact (SPOC) to meet communications needs of both Users and IT, satisfying Customer and IT Provider objectives.",
+        "range": "June 2007 — December 2012"
+    }
+]
