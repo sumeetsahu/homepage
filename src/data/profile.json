@@ -1,0 +1,14 @@
+{
+  "name": "Sumeet Sahu",
+  "title": "Senior Software Development Engineer",
+  "location": "New Delhi, India",
+  "email": "contactme@sumeetsahu.com",
+  "phone": "0091-9963027920",
+  "summary": "Software Engineer with experience in proposing and implementing architectural changes, adopting new technologies, creating proof-of-concept, influencing product requirements, implementing and reviewing changes, and mentoring team to implement best practices and improving engineering efficiency.",
+  "profileImage": "/profile.svg",
+  "socials": {
+    "linkedin": "https://www.linkedin.com/in/sumeetsahu/",
+    "github": "https://github.com/sumeetsahu/",
+    "facebook": "https://www.facebook.com/sumeetsahu/"
+  }
+}
