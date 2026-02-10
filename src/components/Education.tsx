@@ -18,7 +18,7 @@ export default function Education() {
               <div className="p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
                 <p className="text-sm text-gray-700 leading-relaxed">
                   <span className="font-semibold text-blue-900">Premier Engineering Institution:</span> NITK is one of India's most prestigious engineering colleges, 
-                  consistently ranked among the Top 10 National Institutes of Technology nationally and recognized for academic excellence 
+                  consistently ranked among the top tier of National Institutes of Technology and recognized for academic excellence 
                   and innovation in engineering education.
                 </p>
               </div>
