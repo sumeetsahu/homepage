@@ -7,7 +7,21 @@ export default function EarlyInitiatives() {
       description: "Launched in 2010, this service bridged the digital divide in urban India by allowing commuters to book auto-rickshaws (three-wheeled \"tuk-tuk\" taxis) via SMS. It provided a high-tech dispatch solution for users without smartphones or reliable mobile data. The platform aimed to formalize a fragmented market, ensuring predictable ride-hailing for passengers and steady demand for drivers years before the widespread adoption of modern ride-sharing apps like Uber or Ola.",
       icon: "🛺",
       status: "Early Stage Initiative",
-      tags: ["SMS Gateway", "Urban Mobility", "Pre-Smartphone Era"]
+      tags: ["SMS Gateway", "Urban Mobility", "Pre-Smartphone Era"],
+      awards: [
+        {
+          name: "WagonR Smart Idea Challenge",
+          year: "2010",
+          achievement: "Hyderabad City Finalist",
+          description: "Recognized for the development of dialauto.com, a service designed to bridge the digital divide by allowing users to book Autorickshaws via SMS."
+        },
+        {
+          name: "IDEAS 2010 at IIT Kanpur",
+          year: "2010",
+          achievement: "National Finalist",
+          description: "Selected for the \"Dial Auto\" concept, which included an invitation for professional mentorship and a final round presentation at IIT Kanpur."
+        }
+      ]
     },
     {
       name: "ShareTheRide.in",
@@ -53,6 +67,30 @@ export default function EarlyInitiatives() {
               <p className="text-sm text-gray-700 leading-relaxed mb-4">
                 {initiative.description}
               </p>
+              
+              {/* Awards Section - only for DialAuto */}
+              {initiative.awards && (
+                <div className="mb-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">🏆</span>
+                    <h4 className="text-sm font-semibold text-amber-900">Awards & Recognition</h4>
+                  </div>
+                  <div className="space-y-3">
+                    {initiative.awards.map((award, awardIndex) => (
+                      <div key={awardIndex} className="border-l-2 border-amber-300 pl-3">
+                        <div className="flex items-center gap-2 mb-1">
+                          <p className="text-sm font-semibold text-gray-900">{award.name}</p>
+                          <span className="text-xs text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
+                            {award.year}
+                          </span>
+                        </div>
+                        <p className="text-xs font-medium text-amber-800 mb-1">{award.achievement}</p>
+                        <p className="text-xs text-gray-600 leading-relaxed">{award.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
               
               <div className="flex flex-wrap gap-2">
                 {initiative.tags.map((tag, tagIndex) => (
