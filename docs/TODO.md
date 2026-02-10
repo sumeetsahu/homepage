@@ -234,6 +234,7 @@ Even then, create PR afterward for documentation.
 - [x] Add Patents & Publications section
 - [x] Add Early Entrepreneurial Initiatives section
 - [x] Add Key Achievements section
+- [x] Create minimalistic resume in HTML format (see `resume.html`)
 
 ---
 
