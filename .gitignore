@@ -28,5 +28,4 @@ yarn-error.log*
 .env.*.local
 
 # Generated files
-*.pdf
 resume-generator/output/
