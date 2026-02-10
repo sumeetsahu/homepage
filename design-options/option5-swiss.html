@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 5: Swiss Design - Sumeet Sahu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; }
+        .mono { font-family: 'IBM Plex Mono', monospace; }
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+    <!-- Header with Grid -->
+    <header class="border-b-2 border-black">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="mono text-sm font-medium">[SS]</div>
+            <div class="flex gap-8 text-sm mono">
+                <a href="#work" class="hover:opacity-60 transition">WORK</a>
+                <a href="#about" class="hover:opacity-60 transition">ABOUT</a>
+                <a href="#contact" class="hover:opacity-60 transition">CONTACT</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Grid Layout -->
+    <section class="py-20 px-6 grid-bg">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Main Title -->
+                <div class="col-span-12 md:col-span-7 border-2 border-black bg-white p-12">
+                    <p class="mono text-xs mb-8 tracking-widest">SOFTWARE ENGINEER / ARCHITECT</p>
+                    <h1 class="text-7xl md:text-8xl font-bold leading-none mb-12">
+                        SUMEET<br/>SAHU
+                    </h1>
+                    <p class="text-lg leading-relaxed max-w-xl mb-8">
+                        Senior Software Development Engineer at Amazon, specializing in distributed systems 
+                        architecture. 15 years of experience building scalable solutions.
+                    </p>
+                    <div class="flex gap-4 mono text-xs">
+                        <a href="#" class="border-2 border-black px-6 py-3 hover:bg-black hover:text-white transition">
+                            LINKEDIN →
+                        </a>
+                        <a href="#" class="border-2 border-black px-6 py-3 hover:bg-black hover:text-white transition">
+                            GITHUB →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Info Cards -->
+                <div class="col-span-12 md:col-span-5 space-y-6">
+                    <div class="border-2 border-black bg-black text-white p-8">
+                        <p class="mono text-xs mb-2 opacity-60">CURRENT LOCATION</p>
+                        <p class="text-2xl font-bold">New Delhi, India</p>
+                    </div>
+                    <div class="border-2 border-black bg-white p-8">
+                        <p class="mono text-xs mb-2 opacity-60">SCALE</p>
+                        <p class="text-4xl font-bold">1.5B</p>
+                        <p class="text-sm mt-1">Transactions per day</p>
+                    </div>
+                    <div class="border-2 border-black bg-white p-8">
+                        <p class="mono text-xs mb-2 opacity-60">THROUGHPUT</p>
+                        <p class="text-4xl font-bold">15,000</p>
+                        <p class="text-sm mt-1">TPS at scale</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Grid -->
+    <section class="py-20 px-6" id="work">
+        <div class="container mx-auto max-w-7xl">
+            <h2 class="mono text-xs mb-12 tracking-widest">PROFESSIONAL EXPERIENCE</h2>
+            
+            <div class="space-y-0">
+                <!-- Amazon -->
+                <div class="grid grid-cols-12 border-t-2 border-black py-12 hover:bg-gray-50 transition">
+                    <div class="col-span-12 md:col-span-2 mono text-xs">
+                        2020 — NOW
+                    </div>
+                    <div class="col-span-12 md:col-span-10">
+                        <h3 class="text-3xl font-bold mb-2">Amazon India</h3>
+                        <p class="text-xl mb-4 opacity-60">Senior Software Development Engineer</p>
+                        <p class="leading-relaxed mb-6 max-w-3xl">
+                            Leading cost allocation team of Transportation Financial Systems Organization. 
+                            Architecture ownership for systems processing 1.5 billion transactions daily at 15,000 TPS.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mono text-xs">
+                            <span class="border border-black px-3 py-1">AWS</span>
+                            <span class="border border-black px-3 py-1">EVENT-DRIVEN</span>
+                            <span class="border border-black px-3 py-1">JAVA</span>
+                            <span class="border border-black px-3 py-1">MICROSERVICES</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adobe -->
+                <div class="grid grid-cols-12 border-t-2 border-black py-12 hover:bg-gray-50 transition">
+                    <div class="col-span-12 md:col-span-2 mono text-xs">
+                        2015 — 2020
+                    </div>
+                    <div class="col-span-12 md:col-span-10">
+                        <h3 class="text-3xl font-bold mb-2">Adobe India</h3>
+                        <p class="text-xl mb-4 opacity-60">Computer Scientist - 2</p>
+                        <p class="leading-relaxed mb-6 max-w-3xl">
+                            CloudTech division. Developed Service Platform Layer for Adobe Content Platform. 
+                            Focus on microservices architecture and cloud infrastructure.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mono text-xs">
+                            <span class="border border-black px-3 py-1">AZURE</span>
+                            <span class="border border-black px-3 py-1">DOCKER</span>
+                            <span class="border border-black px-3 py-1">MICROSERVICES</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Microsoft -->
+                <div class="grid grid-cols-12 border-t-2 border-black py-12 hover:bg-gray-50 transition">
+                    <div class="col-span-12 md:col-span-2 mono text-xs">
+                        2012 — 2015
+                    </div>
+                    <div class="col-span-12 md:col-span-10">
+                        <h3 class="text-3xl font-bold mb-2">Microsoft India</h3>
+                        <p class="text-xl mb-4 opacity-60">Software Engineer 2</p>
+                        <p class="leading-relaxed mb-6 max-w-3xl">
+                            Bing - Segment Division. Contributed to Windows 8.1 and Cortana releases. 
+                            Search infrastructure and intelligent assistant features.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mono text-xs">
+                            <span class="border border-black px-3 py-1">C#</span>
+                            <span class="border border-black px-3 py-1">BING</span>
+                            <span class="border border-black px-3 py-1">CORTANA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CA Technology -->
+                <div class="grid grid-cols-12 border-t-2 border-b-2 border-black py-12 hover:bg-gray-50 transition">
+                    <div class="col-span-12 md:col-span-2 mono text-xs">
+                        2007 — 2012
+                    </div>
+                    <div class="col-span-12 md:col-span-10">
+                        <h3 class="text-3xl font-bold mb-2">CA Technology</h3>
+                        <p class="text-xl mb-4 opacity-60">Software Engineer</p>
+                        <p class="leading-relaxed max-w-3xl">
+                            Worked on EITM Software Service Desk. Single Point of Contact platform 
+                            for IT communications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Grid -->
+    <section class="py-20 px-6 bg-black text-white">
+        <div class="container mx-auto max-w-7xl">
+            <h2 class="mono text-xs mb-12 tracking-widest opacity-60">CORE COMPETENCIES</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white">
+                <div class="bg-black p-8">
+                    <p class="mono text-xs mb-4 opacity-60">[01]</p>
+                    <h3 class="text-xl font-bold mb-3">Architecture</h3>
+                    <p class="text-sm opacity-80">Event-Driven, Microservices, Serverless</p>
+                </div>
+                <div class="bg-black p-8">
+                    <p class="mono text-xs mb-4 opacity-60">[02]</p>
+                    <h3 class="text-xl font-bold mb-3">Cloud</h3>
+                    <p class="text-sm opacity-80">AWS, Azure, Docker</p>
+                </div>
+                <div class="bg-black p-8">
+                    <p class="mono text-xs mb-4 opacity-60">[03]</p>
+                    <h3 class="text-xl font-bold mb-3">Languages</h3>
+                    <p class="text-sm opacity-80">Java, C#, C++, PHP</p>
+                </div>
+                <div class="bg-black p-8">
+                    <p class="mono text-xs mb-4 opacity-60">[04]</p>
+                    <h3 class="text-xl font-bold mb-3">Certification</h3>
+                    <p class="text-sm opacity-80">Certified Scrum Master</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t-2 border-black">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 md:col-span-6">
+                    <p class="mono text-xs mb-2">CONTACT</p>
+                    <p class="text-sm">contactme@sumeetsahu.com</p>
+                </div>
+                <div class="col-span-12 md:col-span-6 text-right">
+                    <p class="mono text-xs">© 2026 SUMEET SAHU</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

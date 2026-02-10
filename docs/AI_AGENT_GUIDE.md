@@ -8,6 +8,21 @@ This document is specifically designed to help AI coding assistants (like Cursor
 **Tech Stack:** React + TypeScript + Tailwind CSS  
 **Build Tool:** Vite  
 **Hosting:** GitHub Pages  
+**Design:** Option 9 Enhanced - Tabbed Experience with Philosophy & Contact
+
+## 🎨 Design System (IMPORTANT!)
+
+**Before making ANY design changes, read:**
+- [`design-system/README.md`](design-system/README.md) - Quick start guide
+- [`design-system/DESIGN_SYSTEM.md`](design-system/DESIGN_SYSTEM.md) - Complete specification
+- [`design-system/COMPONENT_EXAMPLES.md`](design-system/COMPONENT_EXAMPLES.md) - Copy-paste patterns
+
+**Key Design Features:**
+- Clean, minimalist aesthetic
+- Tabbed experience layout (Featured/All/Enterprise/Startup)
+- Philosophy quote section
+- Contact section with glass morphism
+- Scalable for unlimited experience entries  
 
 ## 📁 File Location Cheatsheet
 
@@ -16,14 +31,15 @@ This document is specifically designed to help AI coding assistants (like Cursor
 | Personal info (name, email, etc.) | `src/data/profile.json` |
 | Work experience | `src/data/experience.json` |
 | Skills & certifications | `src/data/skills.json` |
-| Education | `src/data/education.json` |
-| Header styling/layout | `src/components/Header.tsx` |
-| Experience section | `src/components/Experience.tsx` |
+| Philosophy quote | `src/components/Philosophy.tsx` |
+| Header/Hero section | `src/components/Header.tsx` |
+| Experience tabs/layout | `src/components/Experience.tsx` |
 | Skills section | `src/components/Skills.tsx` |
-| Education section | `src/components/Education.tsx` |
+| Contact section | `src/components/Contact.tsx` |
 | Footer | `src/components/Footer.tsx` |
 | Type definitions | `src/types/index.ts` |
 | Profile image | `public/profile.svg` (or .jpg/.png) |
+| **Design system** | `docs/design-system/` |
 
 ## 🔄 Common Update Patterns
 

@@ -10,10 +10,13 @@ Modern, responsive personal profile page built with React, TypeScript, and Tailw
 
 - 📱 **Fully Responsive** - Mobile-first design, looks great on all devices
 - ⚡ **Lightning Fast** - Vite build system, minimal bundle size (~65KB)
-- 🎨 **Modern Design** - Clean UI with Tailwind CSS
+- 🎨 **Modern Design** - Clean UI with elegant typography and subtle gradients
 - 🔧 **Easy to Update** - JSON-based content management
 - 🤖 **AI Agent Friendly** - Component-based architecture with TypeScript
 - 🚀 **Auto Deploy** - Push to GitHub, auto-deploys via GitHub Actions
+- 🔄 **Scalable** - Tabbed experience layout handles unlimited growth
+- 💬 **Philosophy Section** - Showcase thought leadership
+- 📧 **Contact Section** - Multiple ways to connect
 
 ## 🚀 Tech Stack
 
@@ -112,10 +115,11 @@ Find and replace in component files:
 homepage/
 ├── 📂 src/
 │   ├── 📂 components/          # React components (modular)
-│   │   ├── Header.tsx          # Profile header with photo
-│   │   ├── Experience.tsx      # Work timeline
-│   │   ├── Skills.tsx          # Skills cards
-│   │   ├── Education.tsx       # Education section
+│   │   ├── Header.tsx          # Hero section with stats
+│   │   ├── Philosophy.tsx      # Quote section
+│   │   ├── Experience.tsx      # Tabbed experience (Featured/All/Enterprise/Startup)
+│   │   ├── Skills.tsx          # Skills grid
+│   │   ├── Contact.tsx         # Contact section
 │   │   └── Footer.tsx          # Footer
 │   ├── 📂 data/                # Content (JSON files)
 │   │   ├── profile.json        # Personal info
@@ -131,8 +135,15 @@ homepage/
 │   ├── profile.svg             # Profile image
 │   └── favicon.svg             # Site icon
 ├── 📂 docs/                    # Documentation
+│   ├── 📂 design-system/       # Design system docs
+│   │   ├── README.md           # Quick start guide
+│   │   ├── DESIGN_SYSTEM.md    # Complete spec
+│   │   └── COMPONENT_EXAMPLES.md # Copy-paste examples
 │   ├── ARCHITECTURE.md         # Technical details
-│   └── AI_AGENT_GUIDE.md       # Guide for AI tools
+│   ├── AI_AGENT_GUIDE.md       # Guide for AI tools
+│   ├── DEPLOYMENT.md           # Deployment instructions
+│   └── MOBILE_RESPONSIVE.md    # Responsiveness verification
+├── 📂 design-options/          # Design mockups (reference)
 ├── 📂 .github/workflows/       # CI/CD
 │   └── gh-pages.yml            # Auto-deployment
 └── 📂 dist/                    # Build output (generated)
@@ -226,16 +237,25 @@ echo "yoursite.com" > public/CNAME
 
 This project is **optimized for AI coding assistants** like Cursor, GitHub Copilot, Claude Code, etc.
 
-📖 **Read these guides:**
+📖 **Essential Reading for AI Agents:**
+- [`docs/design-system/README.md`](docs/design-system/README.md) - **START HERE** for design changes
+- [`docs/design-system/DESIGN_SYSTEM.md`](docs/design-system/DESIGN_SYSTEM.md) - Complete design specification
+- [`docs/design-system/COMPONENT_EXAMPLES.md`](docs/design-system/COMPONENT_EXAMPLES.md) - Copy-paste patterns
 - [`docs/AI_AGENT_GUIDE.md`](docs/AI_AGENT_GUIDE.md) - Quick reference for AI tools
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) - Detailed technical documentation
+
+**Design System:**
+- 🎨 Chosen design: Option 9 Enhanced (Tabbed Experience)
+- 📐 Complete color palette, typography, spacing guidelines
+- 🎴 Reusable component patterns with examples
+- ♿ Accessibility and responsive design patterns
 
 **Why AI-friendly?**
 - ✅ Component-based architecture (isolated changes)
 - ✅ TypeScript interfaces (clear data structures)
 - ✅ JSON data files (easy content updates)
 - ✅ Tailwind CSS (AI agents excel at utility classes)
-- ✅ Comprehensive documentation
+- ✅ Comprehensive design system (consistent changes)
 
 ## 🧪 Development Commands
 

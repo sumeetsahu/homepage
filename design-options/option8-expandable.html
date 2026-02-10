@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 8: Expandable Timeline - Sumeet Sahu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .experience-item { transition: all 0.3s ease; }
+        .experience-item.collapsed .full-content { 
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .experience-item:not(.collapsed) .full-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Hero -->
+    <section class="py-20 px-6 bg-white border-b">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-3">
+                    <p class="text-sm uppercase tracking-widest text-gray-500 mb-4">Software Engineer</p>
+                    <h1 class="text-6xl md:text-7xl font-light mb-6 leading-tight">
+                        Sumeet<br/>
+                        <span class="font-semibold">Sahu</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+                        Building scalable systems at Amazon. 15+ years across top tech companies.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-sm border-b-2 border-black pb-1 hover:text-gray-600 transition">LinkedIn</a>
+                        <a href="#" class="text-sm border-b-2 border-black pb-1 hover:text-gray-600 transition">GitHub</a>
+                        <a href="#" class="text-sm border-b-2 border-black pb-1 hover:text-gray-600 transition">Email</a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+                        <p class="text-4xl font-light mb-1">1.5B</p>
+                        <p class="text-sm text-gray-600">Transactions/Day</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg">
+                        <p class="text-4xl font-light mb-1">15+</p>
+                        <p class="text-sm text-gray-600">Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience with Expand/Collapse -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-semibold">Experience</h2>
+                <button onclick="toggleAll()" class="text-sm text-blue-600 hover:text-blue-700 underline">
+                    Expand All
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Amazon - Default Expanded (Current) -->
+                <div class="experience-item bg-white rounded-xl border border-gray-200 overflow-hidden" data-id="amazon">
+                    <div class="p-6 cursor-pointer hover:bg-gray-50 transition" onclick="toggleExperience('amazon')">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="text-xl font-semibold">Senior SDE at Amazon</h3>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">Current</span>
+                                </div>
+                                <p class="text-gray-600">Transportation Financial Systems</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-500 mb-1">2020 — Present</p>
+                                <svg class="w-5 h-5 text-gray-400 transition-transform expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="full-content px-6 pb-6">
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Leading the cost allocation team of Transportation Financial Systems Organization. 
+                            Architecting systems that process 1.5 billion transactions per day at 15,000 TPS, 
+                            supporting both bounded and unbounded data processing.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium">AWS</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium">Event-Driven</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium">Java</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium">15K TPS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adobe - Default Collapsed -->
+                <div class="experience-item collapsed bg-white rounded-xl border border-gray-200 overflow-hidden" data-id="adobe">
+                    <div class="p-6 cursor-pointer hover:bg-gray-50 transition" onclick="toggleExperience('adobe')">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">Computer Scientist at Adobe</h3>
+                                <p class="text-gray-600">CloudTech Division</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-500 mb-1">2015 — 2020</p>
+                                <svg class="w-5 h-5 text-gray-400 transition-transform expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="full-content px-6 pb-6">
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Developed Service Platform Layer for Adobe Content Platform. 
+                            Focus on microservices architecture and cloud infrastructure.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 rounded-lg text-xs font-medium">Azure</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 rounded-lg text-xs font-medium">Microservices</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 rounded-lg text-xs font-medium">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Microsoft - Default Collapsed -->
+                <div class="experience-item collapsed bg-white rounded-xl border border-gray-200 overflow-hidden" data-id="microsoft">
+                    <div class="p-6 cursor-pointer hover:bg-gray-50 transition" onclick="toggleExperience('microsoft')">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">Software Engineer 2 at Microsoft</h3>
+                                <p class="text-gray-600">Bing - Segment Division</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-500 mb-1">2012 — 2015</p>
+                                <svg class="w-5 h-5 text-gray-400 transition-transform expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="full-content px-6 pb-6">
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Worked with Bing - Segment Division. Involved with Windows 8.1 and Cortana releases.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-xs font-medium">C#</span>
+                            <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-xs font-medium">Bing</span>
+                            <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-xs font-medium">Cortana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CA Technology - Default Collapsed -->
+                <div class="experience-item collapsed bg-white rounded-xl border border-gray-200 overflow-hidden" data-id="ca">
+                    <div class="p-6 cursor-pointer hover:bg-gray-50 transition" onclick="toggleExperience('ca')">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">Software Engineer at CA Technology</h3>
+                                <p class="text-gray-600">EITM Software Service Desk</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-500 mb-1">2007 — 2012</p>
+                                <svg class="w-5 h-5 text-gray-400 transition-transform expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="full-content px-6 pb-6">
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Worked on EITM Software Service Desk providing Single Point of Contact for IT communications.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium">Service Desk</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium">EITM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MyPNRStatus - Default Collapsed -->
+                <div class="experience-item collapsed bg-white rounded-xl border border-gray-200 overflow-hidden" data-id="mypnr">
+                    <div class="p-6 cursor-pointer hover:bg-gray-50 transition" onclick="toggleExperience('mypnr')">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">Founder at myPNRstatus</h3>
+                                <p class="text-gray-600">Railway Services Platform</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-500 mb-1">2010 — 2016</p>
+                                <svg class="w-5 h-5 text-gray-400 transition-transform expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="full-content px-6 pb-6">
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Built one of India's largest internet-cum-SMS based Railway service. 
+                            Served 400K unique users with free SMS alerts for PNR status and train timings.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-xs font-medium">PHP</span>
+                            <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-xs font-medium">MySQL</span>
+                            <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-xs font-medium">400K Users</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p class="text-sm text-gray-500">💡 Click any role to expand/collapse details</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="py-20 px-6 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-semibold mb-12">Skills & Expertise</h2>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="p-6 bg-gradient-to-br from-blue-50 to-white rounded-xl">
+                    <h3 class="font-semibold mb-3">Architecture</h3>
+                    <p class="text-sm text-gray-600">Event-Driven, Microservices, Serverless</p>
+                </div>
+                <div class="p-6 bg-gradient-to-br from-purple-50 to-white rounded-xl">
+                    <h3 class="font-semibold mb-3">Cloud</h3>
+                    <p class="text-sm text-gray-600">AWS, Azure, Docker</p>
+                </div>
+                <div class="p-6 bg-gradient-to-br from-pink-50 to-white rounded-xl">
+                    <h3 class="font-semibold mb-3">Languages</h3>
+                    <p class="text-sm text-gray-600">Java, C#, C++, PHP</p>
+                </div>
+                <div class="p-6 bg-gradient-to-br from-cyan-50 to-white rounded-xl">
+                    <h3 class="font-semibold mb-3">Certification</h3>
+                    <p class="text-sm text-gray-600">Certified Scrum Master</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t">
+        <div class="container mx-auto max-w-6xl text-center text-sm text-gray-600">
+            <p>© 2026 Sumeet Sahu · New Delhi, India</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleExperience(id) {
+            const item = document.querySelector(`[data-id="${id}"]`);
+            const icon = item.querySelector('.expand-icon');
+            item.classList.toggle('collapsed');
+            icon.style.transform = item.classList.contains('collapsed') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        function toggleAll() {
+            const items = document.querySelectorAll('.experience-item');
+            const allExpanded = Array.from(items).every(item => !item.classList.contains('collapsed'));
+            
+            items.forEach(item => {
+                const icon = item.querySelector('.expand-icon');
+                if (allExpanded) {
+                    item.classList.add('collapsed');
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    item.classList.remove('collapsed');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+            
+            event.target.textContent = allExpanded ? 'Expand All' : 'Collapse All';
+        }
+    </script>
+</body>
+</html>
