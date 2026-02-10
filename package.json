@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-resume": "node resume-generator/generator.js"
   },
   "author": "Sumeet Sahu",
   "license": "MIT",

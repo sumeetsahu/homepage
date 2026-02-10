@@ -1,0 +1,10 @@
+{
+  "name": "resume-generator",
+  "version": "1.0.0",
+  "description": "Generate resume from profile data",
+  "type": "commonjs",
+  "main": "generator.js",
+  "scripts": {
+    "generate": "node generator.js"
+  }
+}
