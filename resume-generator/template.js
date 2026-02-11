@@ -223,11 +223,9 @@ function generateResumeHTML(data) {
         <div class="name">${profile.name.toUpperCase()}</div>
         <div class="title">${profile.title}</div>
         <div class="contact">
-            ${profile.location} • 
-            <a href="mailto:${profile.email}">${profile.email}</a> • 
-            ${profile.phone} • 
-            ${profile.website ? `<a href="${profile.website.startsWith('http') ? profile.website : 'https://' + profile.website}">${socialDisplay(profile.website)}</a> • ` : ''}<a href="${profile.socials.linkedin}">${socialDisplay(profile.socials?.linkedin)}</a> • 
-            <a href="${profile.socials.github}">${socialDisplay(profile.socials?.github)}</a>
+            <span class="contact-line">${profile.phone} • <a href="mailto:${profile.email}">${profile.email}</a> • ${profile.location}</span>
+            <br>
+            <span class="contact-line">${profile.website ? `<a href="${profile.website.startsWith('http') ? profile.website : 'https://' + profile.website}">${socialDisplay(profile.website)}</a> • ` : ''}<a href="${profile.socials.linkedin}">${socialDisplay(profile.socials?.linkedin)}</a> • <a href="${profile.socials.github}">${socialDisplay(profile.socials?.github)}</a></span>
         </div>
     </div>
 
