@@ -1,4 +1,5 @@
 import { PatentsData } from '../types';
+import { trackClick } from '../utils/analytics';
 
 interface PatentsProps {
   data: PatentsData;
@@ -85,11 +86,12 @@ export default function Patents({ data }: PatentsProps) {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-500">
               Patent details available on{" "}
-              <a 
+              <a
                 href={patents[0]?.url ?? (patents[0]?.patentSlug ? `${googlePatentsBaseUrl}${patents[0].patentSlug}/` : 'https://patents.google.com/')}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 font-medium underline"
+                onClick={() => trackClick('patents_google_patents', { location: 'patents', url: patents[0]?.url ?? (patents[0]?.patentSlug ? `${googlePatentsBaseUrl}${patents[0].patentSlug}/` : 'https://patents.google.com/') })}
               >
                 Google Patents
               </a>

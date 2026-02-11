@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Experience as ExperienceType } from '../types';
+import { trackEvent } from '../utils/analytics';
 
 interface ExperienceProps {
   experiences: ExperienceType[];
@@ -58,7 +59,10 @@ export default function Experience({ experiences }: ExperienceProps) {
         <div className="border-b border-gray-200 mb-8">
           <div className="flex flex-wrap gap-2">
             <button
-              onClick={() => setActiveTab('featured')}
+              onClick={() => {
+                setActiveTab('featured');
+                trackEvent('experience_tab', { event_label: 'featured', event_category: 'engagement' });
+              }}
               className={`px-6 py-3 font-medium text-sm border-b-2 transition ${
                 activeTab === 'featured'
                   ? 'border-black'
@@ -68,7 +72,10 @@ export default function Experience({ experiences }: ExperienceProps) {
               Featured Roles
             </button>
             <button
-              onClick={() => setActiveTab('all')}
+              onClick={() => {
+                setActiveTab('all');
+                trackEvent('experience_tab', { event_label: 'all', event_category: 'engagement' });
+              }}
               className={`px-6 py-3 font-medium text-sm border-b-2 transition ${
                 activeTab === 'all'
                   ? 'border-black'
@@ -78,7 +85,10 @@ export default function Experience({ experiences }: ExperienceProps) {
               All Experience
             </button>
             <button
-              onClick={() => setActiveTab('enterprise')}
+              onClick={() => {
+                setActiveTab('enterprise');
+                trackEvent('experience_tab', { event_label: 'enterprise', event_category: 'engagement' });
+              }}
               className={`px-6 py-3 font-medium text-sm border-b-2 transition ${
                 activeTab === 'enterprise'
                   ? 'border-black'

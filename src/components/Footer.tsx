@@ -1,4 +1,5 @@
 import { ProfileData } from '../types';
+import { trackClick } from '../utils/analytics';
 
 interface FooterProps {
   profile: ProfileData;
@@ -15,17 +16,17 @@ export default function Footer({ profile }: FooterProps) {
           <p className="text-sm">© {currentYear} {name}. All rights reserved.</p>
           <div className="flex gap-6 text-sm">
             {socials.linkedin && (
-              <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition" onClick={() => trackClick('footer_linkedin', { url: socials.linkedin!, location: 'footer' })}>
                 LinkedIn
               </a>
             )}
             {socials.github && (
-              <a href={socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              <a href={socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition" onClick={() => trackClick('footer_github', { url: socials.github!, location: 'footer' })}>
                 GitHub
               </a>
             )}
             {socials.facebook && (
-              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white transition" onClick={() => trackClick('footer_facebook', { url: socials.facebook!, location: 'footer' })}>
                 Facebook
               </a>
             )}

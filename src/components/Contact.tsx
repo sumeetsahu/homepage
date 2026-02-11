@@ -1,4 +1,5 @@
 import { ProfileData } from '../types';
+import { trackClick } from '../utils/analytics';
 
 interface ContactProps {
   profile: ProfileData;
@@ -14,21 +15,23 @@ export default function Contact({ profile }: ContactProps) {
         </p>
         
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <a 
-            href={`mailto:${profile.email}`} 
+          <a
+            href={`mailto:${profile.email}`}
             className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-xl hover:bg-white/20 transition"
+            onClick={() => trackClick('contact_email', { location: 'contact' })}
           >
             <div className="text-4xl mb-3">✉️</div>
             <h3 className="font-semibold mb-2">Email</h3>
             <p className="text-sm text-blue-100">{profile.email}</p>
           </a>
-          
+
           {profile.socials.linkedin && (
-            <a 
-              href={profile.socials.linkedin} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href={profile.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-xl hover:bg-white/20 transition"
+              onClick={() => trackClick('contact_linkedin', { url: profile.socials.linkedin!, location: 'contact' })}
             >
               <div className="text-4xl mb-3">💼</div>
               <h3 className="font-semibold mb-2">LinkedIn</h3>
@@ -42,13 +45,14 @@ export default function Contact({ profile }: ContactProps) {
               })()}</p>
             </a>
           )}
-          
+
           {profile.socials.github && (
-            <a 
-              href={profile.socials.github} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href={profile.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-xl hover:bg-white/20 transition"
+              onClick={() => trackClick('contact_github', { url: profile.socials.github!, location: 'contact' })}
             >
               <div className="text-4xl mb-3">💻</div>
               <h3 className="font-semibold mb-2">GitHub</h3>
