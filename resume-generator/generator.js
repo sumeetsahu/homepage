@@ -72,22 +72,19 @@ async function main() {
   const experiences = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'experience.json'), 'utf8'));
   const skills = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'skills.json'), 'utf8'));
   const education = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'education.json'), 'utf8'));
+  const achievementsData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'achievements.json'), 'utf8'));
+  const patentsData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'patents.json'), 'utf8'));
 
-  // Define key achievements (you can move this to a separate JSON file later if needed)
-  const achievements = [
-    'Pioneered GenAI code generation initiative impacting 8,000+ developers with 50% productivity improvement',
-    'Delivered $600K annual cost savings through Apache Beam migration processing 1.5B daily transactions',
-    'Scaled myPNRstatus startup from zero to 600,000 users as solo founder',
-    'Architected multi-cloud orchestration platform serving millions of Adobe Experience Cloud users'
-  ];
+  // One-line bullets for resume from achievements (description is impact-focused)
+  const achievements = achievementsData.achievements.map((a) => a.description);
 
-  // Patent information (you can move this to a separate JSON file later if needed)
-  const patent = {
-    title: 'Digital Media Environment for Removal of Interference Patterns from Digital Images',
-    number: 'US Patent 10,134,113',
-    date: 'November 20, 2018',
-    assignee: 'Adobe Inc.'
-  };
+  // Patents in template shape: { title, number, date, assignee }
+  const patents = (patentsData.patents || []).map((p) => ({
+    title: p.title,
+    number: p.patentNumber,
+    date: p.issueDate,
+    assignee: p.assignee
+  }));
 
   // Generate resume
   console.log('🔨 Generating resume...');
@@ -98,7 +95,7 @@ async function main() {
     skills,
     education,
     achievements,
-    patent
+    patents
   });
 
   // Write to file

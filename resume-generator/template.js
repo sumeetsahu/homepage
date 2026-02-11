@@ -4,7 +4,7 @@
  */
 
 function generateResumeHTML(data) {
-  const { profile, experiences, skills, education, achievements, patent } = data;
+  const { profile, experiences, skills, education, achievements, patents } = data;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -260,13 +260,14 @@ function generateResumeHTML(data) {
     </div>
 
     <!-- Patents -->
-    ${patent ? `
+    ${patents && patents.length > 0 ? `
     <div class="section">
         <div class="section-title">Patents & Publications</div>
+        ${patents.map(p => `
         <div class="patent-item">
-            <div class="patent-title">${patent.title}</div>
-            <div class="patent-number">${patent.number} • Issued ${patent.date} • ${patent.assignee}</div>
-        </div>
+            <div class="patent-title">${p.title}</div>
+            <div class="patent-number">${p.number} • Issued ${p.date} • ${p.assignee}</div>
+        </div>`).join('\n')}
     </div>` : ''}
 
     <!-- Technical Skills -->
