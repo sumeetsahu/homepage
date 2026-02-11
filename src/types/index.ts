@@ -1,8 +1,15 @@
+export interface Role {
+  title: string;
+  range: string;
+  summary: string;
+}
+
 export interface Experience {
   role: string;
   company: string;
   summary: string;
   range: string;
+  roles?: Role[]; // Optional: for consolidated experiences with career progression
 }
 
 export interface Skill {
