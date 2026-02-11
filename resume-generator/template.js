@@ -3,6 +3,16 @@
  * Generates a clean, minimalistic resume in HTML format
  */
 
+function socialDisplay(url) {
+  if (!url) return '';
+  try {
+    const u = new URL(url);
+    return (u.hostname.replace(/^www\./, '') + u.pathname).replace(/\/$/, '');
+  } catch {
+    return url;
+  }
+}
+
 function generateResumeHTML(data) {
   const { profile, experiences, skills, education, achievements, patents } = data;
 
@@ -220,8 +230,8 @@ function generateResumeHTML(data) {
             ${profile.location} • 
             <a href="mailto:${profile.email}">${profile.email}</a> • 
             ${profile.phone} • 
-            <a href="${profile.socials.linkedin}">linkedin.com/in/sumeetsahu</a> • 
-            <a href="${profile.socials.github}">github.com/sumeetsahu</a>
+            <a href="${profile.socials.linkedin}">${socialDisplay(profile.socials?.linkedin)}</a> • 
+            <a href="${profile.socials.github}">${socialDisplay(profile.socials?.github)}</a>
         </div>
     </div>
 
