@@ -182,7 +182,28 @@ export default function Experience({ experiences }: ExperienceProps) {
                     )}
                   </div>
                   <p className="text-lg text-gray-600 mb-3">{exp.role}</p>
-                  <p className="text-gray-700 leading-relaxed mb-4">{exp.summary}</p>
+                  
+                  {/* Hierarchical roles for consolidated experiences */}
+                  {exp.roles && exp.roles.length > 0 ? (
+                    <div className="mb-4">
+                      <p className="text-gray-700 leading-relaxed mb-4">{exp.summary}</p>
+                      <div className="ml-4 border-l-2 border-gray-300 pl-6 space-y-6">
+                        {exp.roles.map((role, roleIndex) => (
+                          <div key={roleIndex} className="relative">
+                            <div className="absolute -left-[26px] w-3 h-3 rounded-full bg-red-400 border-2 border-white"></div>
+                            <div className="mb-2">
+                              <p className="font-semibold text-gray-800">{role.title}</p>
+                              <p className="text-sm text-gray-500">{role.range}</p>
+                            </div>
+                            <p className="text-sm text-gray-700 leading-relaxed">{role.summary}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="text-gray-700 leading-relaxed mb-4">{exp.summary}</p>
+                  )}
+                  
                   <div className="flex flex-wrap gap-2">
                     {exp.company.includes('Intuit') && (
                       <>
@@ -257,7 +278,21 @@ export default function Experience({ experiences }: ExperienceProps) {
                     )}
                   </div>
                   <p className="text-sm text-gray-500 mb-3">{exp.range}</p>
-                  <p className="text-sm text-gray-700">{exp.role}</p>
+                  <p className="text-sm text-gray-700 mb-2">{exp.role}</p>
+                  
+                  {/* Show role progression for consolidated experiences */}
+                  {exp.roles && exp.roles.length > 0 && (
+                    <div className="mt-3 pt-3 border-t border-gray-200">
+                      <p className="text-xs text-gray-500 mb-2">Career Progression:</p>
+                      <div className="space-y-1">
+                        {exp.roles.map((role, roleIndex) => (
+                          <div key={roleIndex} className="text-xs text-gray-600">
+                            <span className="font-medium">•</span> {role.title} <span className="text-gray-400">({role.range})</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

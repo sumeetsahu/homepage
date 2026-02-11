@@ -12,16 +12,22 @@
         "range": "February 2020 — September 2024"
     },
     {
-        "role": "Computer Scientist - II",
+        "role": "Computer Scientist - II (promoted from Computer Scientist)",
         "company": "Adobe India - Noida",
-        "summary": "Directed full lifecycle development of Gyarados, a central asynchronous service platform for Adobe Experience Cloud (CC Home) synchronizing digital assets for millions of users. Designed and deployed highly available, secure core frameworks within multi-cloud containerized environment. Key contributions: dockerization of Windows Workers, architecture of new orchestration layer, and custom autoscaling strategies for asynchronous services optimizing performance and resource efficiency across multiple clouds.",
-        "range": "July 2016 — February 2020"
-    },
-    {
-        "role": "Computer Scientist",
-        "company": "Adobe India - Noida",
-        "summary": "Spearheaded development of PDF Scan Library SDK and PCL Print Engine, delivering high-performance solution for converting scanned documents into authentic Adobe PDFs. Engineered core functionalities including DRM protection, digital timestamping, and image cleanup, ensuring enterprise-grade security and PDF/A compliance. Managed end-to-end integration of features like watermarking and document security, providing customers with robust toolkit for professional-grade document digitization.",
-        "range": "July 2015 — June 2016"
+        "summary": "Progressive career spanning platform architecture and SDK development at Adobe. Led Gyarados platform for Adobe Experience Cloud serving millions; developed PDF Scan SDK with DRM, security, and compliance. Specialized in multi-cloud containerization, orchestration, and enterprise-grade document solutions.",
+        "range": "July 2015 — February 2020",
+        "roles": [
+            {
+                "title": "Computer Scientist - II",
+                "range": "July 2016 — February 2020",
+                "summary": "Directed full lifecycle development of Gyarados, a central asynchronous service platform for Adobe Experience Cloud (CC Home) synchronizing digital assets for millions of users. Designed and deployed highly available, secure core frameworks within multi-cloud containerized environment. Key contributions: dockerization of Windows Workers, architecture of new orchestration layer, and custom autoscaling strategies for asynchronous services optimizing performance and resource efficiency across multiple clouds."
+            },
+            {
+                "title": "Computer Scientist",
+                "range": "July 2015 — June 2016",
+                "summary": "Spearheaded development of PDF Scan Library SDK and PCL Print Engine, delivering high-performance solution for converting scanned documents into authentic Adobe PDFs. Engineered core functionalities including DRM protection, digital timestamping, and image cleanup, ensuring enterprise-grade security and PDF/A compliance. Managed end-to-end integration of features like watermarking and document security, providing customers with robust toolkit for professional-grade document digitization."
+            }
+        ]
     },
     {
         "role": "Software Engineer 2",
