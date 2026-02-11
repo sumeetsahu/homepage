@@ -107,6 +107,8 @@ export interface ProfileData {
   email: string;
   phone: string;
   summary: string;
+  /** Short description for HTML meta and SEO (defaults to summary if omitted) */
+  metaDescription?: string;
   profileImage: string;
   socials: {
     linkedin?: string;
