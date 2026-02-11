@@ -51,8 +51,32 @@ function escapeHtml(s: string): string {
     .replace(/"/g, '&quot;')
 }
 
+// Injects Google Analytics (GA4) when VITE_GA_MEASUREMENT_ID is set
+function injectGoogleAnalytics(): import('vite').Plugin {
+  return {
+    name: 'inject-google-analytics',
+    transformIndexHtml: {
+      order: 'post' as const,
+      handler(html: string) {
+        const id = process.env.VITE_GA_MEASUREMENT_ID
+        if (!id || id.trim() === '') return html
+        const snippet = `
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${escapeHtml(id)}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${escapeHtml(id)}', { send_page_view: true });
+    </script>`
+        return html.replace('</head>', `${snippet}\n  </head>`)
+      },
+    },
+  }
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [injectProfileHtml(), react()],
+  plugins: [injectProfileHtml(), injectGoogleAnalytics(), react()],
   base: '/',
 })

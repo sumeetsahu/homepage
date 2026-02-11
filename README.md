@@ -217,6 +217,32 @@ npm run build
 # Upload dist/ contents to any static host
 ```
 
+### Google Analytics (optional)
+
+To track traffic and how visitors interact with buttons and links. **Full steps and reference:** [docs/GOOGLE_ANALYTICS.md](docs/GOOGLE_ANALYTICS.md).
+
+1. Create a [GA4 property](https://analytics.google.com/) and copy your **Measurement ID** (e.g. `G-XXXXXXXXXX`).
+2. Add it to your environment:
+   - **Local:** Create a `.env` file in the project root with `VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX`.
+   - **GitHub Actions:** In the repo go to **Settings** → **Secrets and variables** → **Actions**, add a secret `VITE_GA_MEASUREMENT_ID` with your ID, then in the workflow add an `env` block to the build step (see below).
+3. Rebuild and deploy. Analytics is disabled when the variable is unset (e.g. local dev without `.env`).
+
+**Tracked automatically:**
+
+- **Page views** – initial load (and path).
+- **Clicks** – Get in Touch, Resume download, LinkedIn, GitHub, Email, Contact section links, Footer links, Experience tabs (Featured / All / Enterprise), Patents “Google Patents” link.
+
+In GA4 you can see which buttons/links get clicks; if a button gets no events, visitors may be avoiding it or ad-blockers may be blocking the script (you’ll still see traffic from users who don’t block).
+
+**GitHub Actions:** To enable GA on the deployed site, add the secret `VITE_GA_MEASUREMENT_ID` and pass it into the build:
+
+```yaml
+- name: Build
+  run: npm run build
+  env:
+    VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+```
+
 ### GitHub Pages Setup
 
 **First-time setup:**
