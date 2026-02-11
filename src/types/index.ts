@@ -106,6 +106,8 @@ export interface ProfileData {
   location: string;
   email: string;
   phone: string;
+  /** Career start date (YYYY-MM, e.g. "2007-06"). Used to compute {{years}} in summary, metaDescription, and headlineStats. */
+  careerStartDate?: string;
   summary: string;
   /** Short description for HTML meta and SEO (defaults to summary if omitted) */
   metaDescription?: string;
