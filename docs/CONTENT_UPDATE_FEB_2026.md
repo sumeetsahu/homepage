@@ -34,7 +34,7 @@ Complete content refresh based on updated work experience, highlighting GenAI le
 ## 3. Philosophy Quote (`src/components/Philosophy.tsx`)
 
 ### New Quote (Option B - Selected):
-> "The future of software engineering lies in the seamless integration of human creativity with AI-driven automation—building systems that not only scale technically but amplify developer productivity and business impact exponentially."
+> "The future of software engineering lies in the seamless integration of human creativity with AI-native automation—building systems that not only scale technically but amplify productivity and business impact exponentially."
 
 **Rationale**: Reflects current work at Intuit in GenAI/AI-driven development, forward-looking vision.
 
