@@ -1,0 +1,24 @@
+{
+  "sectionTitle": "Patents & Publications",
+  "sectionSubtitle": "Technical innovations and intellectual property contributions",
+  "googlePatentsBaseUrl": "https://patents.google.com/patent/",
+  "patents": [
+    {
+      "title": "Digital Media Environment for Removal of Interference Patterns from Digital Images",
+      "patentNumber": "US 10,134,113",
+      "patentSlug": "US10134113B1",
+      "issueDate": "November 20, 2018",
+      "assignee": "Adobe Inc.",
+      "icon": "🔬",
+      "summary": "Invented spatially-adaptive filtering techniques for removing interference patterns from digital images. The patent describes a novel approach where an edge detection system generates context data including distance from edges, color similarity, and luminance data to construct adaptive filters that effectively remove interference patterns while preserving image quality.",
+      "technicalAreas": [
+        "Digital Image Processing",
+        "Adaptive Filtering",
+        "Pattern Recognition",
+        "Computer Vision",
+        "Edge Detection"
+      ],
+      "impact": "Core technology for Adobe's PDF scanning and image cleanup solutions"
+    }
+  ]
+}

@@ -1,30 +1,19 @@
-export default function Patents() {
-  const patents = [
-    {
-      title: "Digital Media Environment for Removal of Interference Patterns from Digital Images",
-      patentNumber: "US 10,134,113",
-      issueDate: "November 20, 2018",
-      assignee: "Adobe Inc.",
-      icon: "🔬",
-      summary: "Invented spatially-adaptive filtering techniques for removing interference patterns from digital images. The patent describes a novel approach where an edge detection system generates context data including distance from edges, color similarity, and luminance data to construct adaptive filters that effectively remove interference patterns while preserving image quality.",
-      technicalAreas: [
-        "Digital Image Processing",
-        "Adaptive Filtering",
-        "Pattern Recognition",
-        "Computer Vision",
-        "Edge Detection"
-      ],
-      impact: "Core technology for Adobe's PDF scanning and image cleanup solutions"
-    }
-  ];
+import { PatentsData } from '../types';
+
+interface PatentsProps {
+  data: PatentsData;
+}
+
+export default function Patents({ data }: PatentsProps) {
+  const { sectionTitle, sectionSubtitle, googlePatentsBaseUrl = 'https://patents.google.com/patent/', patents } = data;
 
   return (
     <section className="py-20 px-6 bg-white">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-8">
-          <h2 className="text-3xl font-semibold mb-2">Patents & Publications</h2>
+          <h2 className="text-3xl font-semibold mb-2">{sectionTitle}</h2>
           <p className="text-gray-600">
-            Technical innovations and intellectual property contributions
+            {sectionSubtitle}
           </p>
         </div>
         
@@ -92,19 +81,21 @@ export default function Patents() {
           ))}
         </div>
 
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-500">
-            Patent details available on{" "}
-            <a 
-              href="https://patents.google.com/patent/US10134113B1/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 font-medium underline"
-            >
-              Google Patents
-            </a>
-          </p>
-        </div>
+        {patents.some((p) => p.patentSlug || p.url) && (
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-500">
+              Patent details available on{" "}
+              <a 
+                href={patents[0]?.url ?? (patents[0]?.patentSlug ? `${googlePatentsBaseUrl}${patents[0].patentSlug}/` : 'https://patents.google.com/')}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 font-medium underline"
+              >
+                Google Patents
+              </a>
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,0 +1,38 @@
+{
+  "sectionTitle": "Key Achievements",
+  "sectionSubtitle": "Measurable impact across enterprise and startup environments",
+  "achievements": [
+    {
+      "title": "GenAI Developer Platform",
+      "company": "Intuit",
+      "impact": "8,000+ developers, 50% productivity improvement",
+      "description": "Pioneered enterprise-wide GenAI code generation initiative, transforming SDLC for thousands of developers",
+      "icon": "🚀",
+      "color": "from-green-500 to-blue-500"
+    },
+    {
+      "title": "Financial System Optimization",
+      "company": "Amazon",
+      "impact": "$600K annual savings, 1.5B daily transactions",
+      "description": "Redesigned allocation system using Apache Beam, reducing costs by 60% while processing billions of transactions",
+      "icon": "💰",
+      "color": "from-orange-500 to-yellow-500"
+    },
+    {
+      "title": "myPNRstatus Platform",
+      "company": "Startup",
+      "impact": "600K users, 6 years of impact",
+      "description": "Founded and scaled automated travel alert service for Indian Railways from zero to 600,000 users",
+      "icon": "🎯",
+      "color": "from-purple-500 to-indigo-500"
+    },
+    {
+      "title": "Multi-Cloud Orchestration",
+      "company": "Adobe",
+      "impact": "Millions of users across Adobe Experience Cloud",
+      "description": "Architected Gyarados, central async service platform syncing digital assets in multi-cloud containerized environment",
+      "icon": "☁️",
+      "color": "from-red-500 to-pink-500"
+    }
+  ]
+}

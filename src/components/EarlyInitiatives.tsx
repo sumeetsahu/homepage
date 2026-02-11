@@ -1,46 +1,19 @@
-export default function EarlyInitiatives() {
-  const initiatives = [
-    {
-      name: "DialAuto.com",
-      tagline: "SMS-Based Auto-Rickshaw Booking",
-      year: "2010",
-      description: "Launched in 2010, this service bridged the digital divide in urban India by allowing commuters to book auto-rickshaws (three-wheeled \"tuk-tuk\" taxis) via SMS. It provided a high-tech dispatch solution for users without smartphones or reliable mobile data. The platform aimed to formalize a fragmented market, ensuring predictable ride-hailing for passengers and steady demand for drivers years before the widespread adoption of modern ride-sharing apps like Uber or Ola.",
-      icon: "🛺",
-      status: "Early Stage Initiative",
-      tags: ["SMS Gateway", "Urban Mobility", "Pre-Smartphone Era"],
-      awards: [
-        {
-          name: "WagonR Smart Idea Challenge",
-          year: "2010",
-          achievement: "Hyderabad City Finalist",
-          description: "Recognized for the development of dialauto.com, a service designed to bridge the digital divide by allowing users to book Autorickshaws via SMS."
-        },
-        {
-          name: "IDEAS 2010 at IIT Kanpur",
-          year: "2010",
-          achievement: "National Finalist",
-          description: "Selected for the \"Dial Auto\" concept, which included an invitation for professional mentorship and a final round presentation at IIT Kanpur."
-        }
-      ]
-    },
-    {
-      name: "ShareTheRide.in",
-      tagline: "Corporate Carpooling Platform",
-      year: "2010",
-      description: "This was an intuitive ride-sharing portal designed specifically for daily office commutes, initially launched for employees at CA Technologies (now Broadcom) in Hyderabad. The platform helped users find colleagues or professionals from reputable companies for carpooling or bike-sharing. To solve for safety and trust, the service included a verification system to ensure users were active employees of recognized organizations, focusing on reducing commuting costs and traffic congestion through a secure professional community.",
-      icon: "🚗",
-      status: "Early Stage Initiative",
-      tags: ["Carpooling", "Employee Verification", "Sustainability"]
-    }
-  ];
+import { EarlyInitiativesData } from '../types';
+
+interface EarlyInitiativesProps {
+  data: EarlyInitiativesData;
+}
+
+export default function EarlyInitiatives({ data }: EarlyInitiativesProps) {
+  const { sectionTitle, sectionSubtitle, learningJourneyText, initiatives } = data;
 
   return (
     <section className="py-16 px-6 bg-gray-50">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-8">
-          <h2 className="text-3xl font-semibold mb-2">Early Entrepreneurial Initiatives</h2>
+          <h2 className="text-3xl font-semibold mb-2">{sectionTitle}</h2>
           <p className="text-gray-600">
-            Experimental ventures exploring mobility and community solutions in India's emerging tech landscape
+            {sectionSubtitle}
           </p>
         </div>
         
@@ -108,10 +81,7 @@ export default function EarlyInitiatives() {
 
         <div className="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-lg">
           <p className="text-sm text-gray-700">
-            <span className="font-semibold">Learning Journey:</span> These early-stage initiatives explored innovative solutions 
-            for India's mobility challenges during the pre-smartphone era. While they didn't scale to full launch, the experience 
-            of building user-centric products informed the successful development of <span className="font-semibold">myPNRstatus</span>, 
-            which reached 600,000 users and operated for 6 years.
+            <span className="font-semibold">Learning Journey:</span> {learningJourneyText}
           </p>
         </div>
       </div>

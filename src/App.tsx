@@ -12,22 +12,36 @@ import Footer from './components/Footer';
 import profileData from './data/profile.json';
 import experienceData from './data/experience.json';
 import skillsData from './data/skills.json';
+import philosophyData from './data/philosophy.json';
+import achievementsData from './data/achievements.json';
+import patentsData from './data/patents.json';
+import earlyInitiativesData from './data/earlyInitiatives.json';
+import educationData from './data/education.json';
 
-import { ProfileData, Experience as ExperienceType, SkillGroup } from './types';
+import {
+  ProfileData,
+  Experience as ExperienceType,
+  SkillGroup,
+  PhilosophyData,
+  AchievementsData,
+  PatentsData,
+  EarlyInitiativesData,
+  Education as EducationType,
+} from './types';
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
       <Header profile={profileData as ProfileData} />
-      <Philosophy />
+      <Philosophy data={philosophyData as PhilosophyData} />
       <Experience experiences={experienceData as ExperienceType[]} />
-      <Achievements />
-      <Patents />
-      <EarlyInitiatives />
-      <Education />
+      <Achievements data={achievementsData as AchievementsData} />
+      <Patents data={patentsData as PatentsData} />
+      <EarlyInitiatives data={earlyInitiativesData as EarlyInitiativesData} />
+      <Education items={educationData as EducationType[]} />
       <Skills skills={skillsData as SkillGroup[]} />
       <Contact profile={profileData as ProfileData} />
-      <Footer />
+      <Footer profile={profileData as ProfileData} />
     </div>
   );
 }

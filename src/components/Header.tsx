@@ -5,38 +5,43 @@ interface HeaderProps {
 }
 
 export default function Header({ profile }: HeaderProps) {
+  const nameParts = profile.name.trim().split(/\s+/);
+  const firstName = nameParts[0] ?? '';
+  const lastName = nameParts.slice(1).join(' ') || '';
+
   return (
     <section className="py-20 px-6 border-b">
       <div className="container mx-auto max-w-6xl">
         <div className="max-w-4xl">
-          <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">Principal Engineer</p>
+          <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">{profile.title}</p>
           <h1 className="text-6xl md:text-7xl font-light mb-6 leading-tight">
-            Sumeet<br/>
-            <span className="font-semibold">Sahu</span>
+            {firstName}
+            {lastName ? (
+              <>
+                <br/>
+                <span className="font-semibold">{lastName}</span>
+              </>
+            ) : null}
           </h1>
           <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
             {profile.summary}
           </p>
-          <div className="grid grid-cols-3 gap-6 max-w-xl mb-8">
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <p className="text-3xl font-semibold mb-1">17+</p>
-              <p className="text-xs text-gray-600 uppercase tracking-wide">Years</p>
+          {profile.headlineStats && profile.headlineStats.length > 0 && (
+            <div className="flex flex-wrap gap-6 max-w-xl mb-8">
+              {profile.headlineStats.map((stat, index) => (
+                <div key={index} className="text-center p-4 bg-gray-50 rounded-lg">
+                  <p className="text-3xl font-semibold mb-1">{stat.value}</p>
+                  <p className="text-xs text-gray-600 uppercase tracking-wide">{stat.label}</p>
+                </div>
+              ))}
             </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <p className="text-3xl font-semibold mb-1">8K+</p>
-              <p className="text-xs text-gray-600 uppercase tracking-wide">Developers</p>
-            </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <p className="text-3xl font-semibold mb-1">$600K+</p>
-              <p className="text-xs text-gray-600 uppercase tracking-wide">Savings</p>
-            </div>
-          </div>
+          )}
           <div className="flex flex-wrap gap-4">
             <a href="#contact" className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition font-medium">
               Get in Touch
             </a>
             <a 
-              href="/Sumeet_Sahu_Resume.pdf" 
+              href={profile.resumeUrl ?? '/Sumeet_Sahu_Resume.pdf'} 
               download 
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium inline-flex items-center gap-2"
             >

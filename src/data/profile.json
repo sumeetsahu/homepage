@@ -10,5 +10,13 @@
     "linkedin": "https://www.linkedin.com/in/sumeetsahu/",
     "github": "https://github.com/sumeetsahu/",
     "facebook": "https://www.facebook.com/sumeetsahu/"
-  }
+  },
+  "headlineStats": [
+    { "value": "17+", "label": "Years" },
+    { "value": "8K+", "label": "Developers" },
+    { "value": "$600K+", "label": "Savings" }
+  ],
+  "resumeUrl": "/Sumeet_Sahu_Resume.pdf",
+  "contactTitle": "Let's Connect",
+  "contactTagline": "Open to consulting, speaking engagements, and interesting opportunities."
 }
