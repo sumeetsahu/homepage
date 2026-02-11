@@ -169,18 +169,14 @@ function generateResumeHTML(data) {
             align-items: baseline;
         }
 
-        .degree {
-            font-size: 10pt;
-            font-weight: 600;
-        }
-
         .school {
             font-size: 10pt;
-            color: #4a4a4a;
-            margin-bottom: 2pt;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 3pt;
         }
 
-        .major {
+        .degree {
             font-size: 9pt;
             color: #666;
         }
@@ -230,7 +226,7 @@ function generateResumeHTML(data) {
             ${profile.location} • 
             <a href="mailto:${profile.email}">${profile.email}</a> • 
             ${profile.phone} • 
-            <a href="${profile.socials.linkedin}">${socialDisplay(profile.socials?.linkedin)}</a> • 
+            ${profile.website ? `<a href="${profile.website.startsWith('http') ? profile.website : 'https://' + profile.website}">${socialDisplay(profile.website)}</a> • ` : ''}<a href="${profile.socials.linkedin}">${socialDisplay(profile.socials?.linkedin)}</a> • 
             <a href="${profile.socials.github}">${socialDisplay(profile.socials?.github)}</a>
         </div>
     </div>

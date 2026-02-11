@@ -121,6 +121,8 @@ export interface ProfileData {
   headlineStats?: HeadlineStat[];
   /** Optional resume download URL or path */
   resumeUrl?: string;
+  /** Optional personal/profile website URL (e.g. https://www.sumeetsahu.com) */
+  website?: string;
   /** Optional contact section title and tagline */
   contactTitle?: string;
   contactTagline?: string;
