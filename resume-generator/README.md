@@ -20,12 +20,12 @@ node resume-generator/generator.js
 
 ### Output
 
-The generated resume will be at:
-```
-resume-generator/output/resume.html
-```
+- **HTML:** `resume-generator/output/resume.html`
+- **PDF (automatic when Puppeteer is installed):** `public/Sumeet_Sahu_Resume.pdf` — used by the site and included in the build.
 
-### Convert to PDF
+If the project has `puppeteer` as a devDependency, running `npm run generate-resume` also generates the PDF and overwrites `public/Sumeet_Sahu_Resume.pdf`. In CI (GitHub Actions), the PDF is generated before every build so the deployed resume stays in sync with your profile data.
+
+### Convert to PDF (manual, if needed)
 
 1. **Open in browser:**
    ```bash
