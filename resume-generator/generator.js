@@ -24,6 +24,15 @@ const OUTPUT_DIR = path.join(__dirname, 'output');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'resume.html');
 const PDF_OUTPUT = path.join(ROOT_DIR, 'public', 'Sumeet_Sahu_Resume.pdf');
 
+function getYearsOfExperience(careerStartDate) {
+  const [y, m] = careerStartDate.split('-').map(Number);
+  if (!y || Number.isNaN(y)) return 0;
+  const start = new Date(y, (m || 1) - 1, 1);
+  const now = new Date();
+  const years = (now.getTime() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+  return Math.floor(years);
+}
+
 async function generatePdfIfAvailable() {
   let puppeteer;
   try {
@@ -86,11 +95,25 @@ async function main() {
     assignee: p.assignee
   }));
 
+  // Resolve {{years}} in profile from careerStartDate (YYYY-MM)
+  const profileForResume = { ...profile };
+  if (profile.careerStartDate) {
+    const years = getYearsOfExperience(profile.careerStartDate);
+    const replaceYears = (s) => (typeof s === 'string' ? s.replace(/\{\{years\}\}/g, String(years)) : s);
+    profileForResume.summary = replaceYears(profile.summary);
+    if (profile.headlineStats) {
+      profileForResume.headlineStats = profile.headlineStats.map((stat) => ({
+        ...stat,
+        value: replaceYears(stat.value)
+      }));
+    }
+  }
+
   // Generate resume
   console.log('🔨 Generating resume...');
 
   const resumeHTML = generateResumeHTML({
-    profile,
+    profile: profileForResume,
     experiences,
     skills,
     education,

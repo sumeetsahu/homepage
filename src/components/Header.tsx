@@ -1,4 +1,5 @@
 import { ProfileData } from '../types';
+import { resolveYearsPlaceholder, resolveHeadlineStatValue } from '../utils/profile';
 
 interface HeaderProps {
   profile: ProfileData;
@@ -8,6 +9,7 @@ export default function Header({ profile }: HeaderProps) {
   const nameParts = profile.name.trim().split(/\s+/);
   const firstName = nameParts[0] ?? '';
   const lastName = nameParts.slice(1).join(' ') || '';
+  const summary = resolveYearsPlaceholder(profile.summary, profile.careerStartDate);
 
   return (
     <section className="py-20 px-6 border-b">
@@ -24,13 +26,13 @@ export default function Header({ profile }: HeaderProps) {
             ) : null}
           </h1>
           <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
-            {profile.summary}
+            {summary}
           </p>
           {profile.headlineStats && profile.headlineStats.length > 0 && (
             <div className="flex flex-wrap gap-6 max-w-xl mb-8">
               {profile.headlineStats.map((stat, index) => (
                 <div key={index} className="text-center p-4 bg-gray-50 rounded-lg">
-                  <p className="text-3xl font-semibold mb-1">{stat.value}</p>
+                  <p className="text-3xl font-semibold mb-1">{resolveHeadlineStatValue(stat.value, profile.careerStartDate)}</p>
                   <p className="text-xs text-gray-600 uppercase tracking-wide">{stat.label}</p>
                 </div>
               ))}
