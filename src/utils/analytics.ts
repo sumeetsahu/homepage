@@ -58,3 +58,12 @@ export function trackClick(
     link_location: options?.location,
   });
 }
+
+/** Track resume download. Use this when the user clicks the resume link so you can see "resume_download" in GA4. */
+export function trackResumeDownload(url?: string): void {
+  trackEvent('resume_download', {
+    event_category: 'engagement',
+    event_label: 'resume',
+    link_url: url,
+  });
+}
