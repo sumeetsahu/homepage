@@ -51,7 +51,7 @@ export default function Experience({ experiences }: ExperienceProps) {
   const isCurrentRole = (range: string) => range.includes('Present');
 
   return (
-    <section className="py-20 px-6">
+    <section data-analytics-section="experience" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-4xl font-semibold mb-12">Professional Experience</h2>
         

@@ -8,7 +8,7 @@ export default function Achievements({ data }: AchievementsProps) {
   const { sectionTitle, sectionSubtitle, achievements } = data;
 
   return (
-    <section className="py-20 px-6 bg-gray-50">
+    <section data-analytics-section="achievements" className="py-20 px-6 bg-gray-50">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-4xl font-semibold mb-4">{sectionTitle}</h2>
         <p className="text-gray-600 mb-12">{sectionSubtitle}</p>

@@ -46,14 +46,17 @@ export function trackEvent(
   window.gtag('event', eventName, params as Record<string, unknown>);
 }
 
-/** Convenience: track CTA/link click (so you can see which buttons/links get used or "blocked" via absence of events). */
+/**
+ * Track a CTA/link click with a distinct event name for GA4 (e.g. get_in_touch, linkedin_click).
+ * Each action gets its own event in Reports → Engagement → Events; use link_location to segment by placement.
+ */
 export function trackClick(
-  label: string,
+  eventName: string,
   options?: { url?: string; location?: string }
 ): void {
-  trackEvent('click', {
+  trackEvent(eventName, {
     event_category: 'engagement',
-    event_label: label,
+    event_label: eventName,
     link_url: options?.url,
     link_location: options?.location,
   });
@@ -66,4 +69,96 @@ export function trackResumeDownload(url?: string): void {
     event_label: 'resume',
     link_url: url,
   });
+}
+
+const DEFAULT_SCROLL_THRESHOLDS = [25, 50, 75, 100];
+let scrollDepthSent: Set<number> | null = null;
+
+/** Send a scroll_depth event for GA4 (how far down the page the user scrolled). */
+export function trackScrollDepth(percent: number): void {
+  trackEvent('scroll_depth', {
+    event_category: 'engagement',
+    event_label: `${percent}`,
+    depth_percent: percent,
+  });
+}
+
+/**
+ * Start listening for scroll and fire one scroll_depth event per threshold (e.g. 25, 50, 75, 100) when the user first reaches that depth.
+ * Call once after the page is mounted (e.g. from App or main).
+ */
+export function initScrollDepthTracking(thresholds: number[] = DEFAULT_SCROLL_THRESHOLDS): void {
+  if (typeof document === 'undefined' || typeof window === 'undefined' || !isAnalyticsEnabled()) return;
+  scrollDepthSent = new Set();
+
+  let ticking = false;
+  let maxDepth = 0;
+
+  function checkScroll(): void {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || window.scrollY;
+    const clientHeight = doc.clientHeight;
+    const scrollHeight = doc.scrollHeight;
+    if (scrollHeight <= 0) return;
+    const depthPercent = Math.round((scrollTop + clientHeight) / scrollHeight * 100);
+    maxDepth = Math.max(maxDepth, Math.min(depthPercent, 100));
+
+    for (const threshold of thresholds) {
+      if (maxDepth >= threshold && !scrollDepthSent!.has(threshold)) {
+        scrollDepthSent!.add(threshold);
+        trackScrollDepth(threshold);
+      }
+    }
+    ticking = false;
+  }
+
+  function onScroll(): void {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(checkScroll);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // Check once on load in case the page is short or already scrolled
+  requestAnimationFrame(checkScroll);
+}
+
+let sectionViewSent: Set<string> | null = null;
+
+/** Send a section_view event when a section enters the viewport (for “which sections were seen”). */
+export function trackSectionView(sectionId: string): void {
+  trackEvent('section_view', {
+    event_category: 'engagement',
+    event_label: sectionId,
+    section_id: sectionId,
+  });
+}
+
+/**
+ * Observe sections with data-analytics-section and fire section_view once when they become visible.
+ * Call once after mount (e.g. from App). Sections: philosophy, experience, achievements, patents, early_initiatives, education, skills, contact, footer.
+ */
+export function initSectionViewTracking(): void {
+  if (typeof document === 'undefined' || typeof window === 'undefined' || !isAnalyticsEnabled()) return;
+  sectionViewSent = new Set();
+
+  const elements = document.querySelectorAll<HTMLElement>('[data-analytics-section]');
+  if (elements.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const id = (entry.target as HTMLElement).getAttribute('data-analytics-section');
+        if (id && !sectionViewSent!.has(id)) {
+          sectionViewSent!.add(id);
+          trackSectionView(id);
+        }
+      }
+    },
+    { rootMargin: '0px', threshold: 0.2 }
+  );
+
+  elements.forEach((el) => observer.observe(el));
 }

@@ -9,7 +9,7 @@ export default function Patents({ data }: PatentsProps) {
   const { sectionTitle, sectionSubtitle, googlePatentsBaseUrl = 'https://patents.google.com/patent/', patents } = data;
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section data-analytics-section="patents" className="py-20 px-6 bg-white">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-8">
           <h2 className="text-3xl font-semibold mb-2">{sectionTitle}</h2>
@@ -91,7 +91,7 @@ export default function Patents({ data }: PatentsProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 font-medium underline"
-                onClick={() => trackClick('patents_google_patents', { location: 'patents', url: patents[0]?.url ?? (patents[0]?.patentSlug ? `${googlePatentsBaseUrl}${patents[0].patentSlug}/` : 'https://patents.google.com/') })}
+                onClick={() => trackClick('patents_link', { location: 'patents', url: patents[0]?.url ?? (patents[0]?.patentSlug ? `${googlePatentsBaseUrl}${patents[0].patentSlug}/` : 'https://patents.google.com/') })}
               >
                 Google Patents
               </a>

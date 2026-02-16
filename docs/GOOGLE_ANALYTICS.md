@@ -79,6 +79,21 @@ Each time someone clicks the Resume button we send a dedicated event **`resume_d
 
 Note: We track the *click* on the Resume link. Browsers may open the PDF in a new tab instead of downloading; in both cases the event is sent. Users with ad blockers may not be counted.
 
+### How to see scroll depth
+
+We send a **`scroll_depth`** event when the user first reaches 25%, 50%, 75%, and 100% of the page (by scroll position). In GA4:
+
+1. **Reports** → **Engagement** → **Events** → find **`scroll_depth`**. The **Event count** is the total number of threshold crossings (e.g. 4 per user if they scroll to the bottom).
+2. To see *how far* people scroll: in **Explore**, add **Event name** = `scroll_depth` and use the parameter **`depth_percent`** (or **Event label**) as a dimension. You’ll see how many users reached 25%, 50%, 75%, or 100%.
+3. To approximate “read-through rate”: compare the number of users who triggered `scroll_depth` with label `100` to the number of `page_view` users.
+
+### How to see which sections were viewed
+
+We send a **`section_view`** event the first time each section (Philosophy, Experience, Achievements, Patents, etc.) enters the viewport (20% visible). In GA4:
+
+1. **Reports** → **Engagement** → **Events** → find **`section_view`**.
+2. In **Explore**, use **Event name** = `section_view` and **Event label** (or **section_id**) as dimension to see how many users saw each section (e.g. philosophy vs contact). Helps answer “did people scroll to Patents?” or “how many reached Contact?”.
+
 ---
 
 ## What Is Tracked Automatically
@@ -88,24 +103,22 @@ Note: We track the *click* on the Resume link. Browsers may open the PDF in a ne
 - **When:** On first load of the site.
 - **Sent as:** GA4 default page view (path and title). Also triggered explicitly from `main.tsx` for the initial route.
 
-### Clicks (engagement events)
+### Engagement events (distinct names per action)
 
-All of these send a `click` event with `event_category: 'engagement'` and an `event_label` (and optional `link_url` / `link_location`) so you can see which CTAs are used.
+Each action sends its **own event name** in GA4 so you see e.g. `get_in_touch`, `linkedin_click`, `email_click` as separate rows in Reports → Engagement → Events. Use the `link_location` parameter to segment by placement (header, contact, footer).
 
-| Location   | Event label (examples)     | Notes                          |
-|-----------|----------------------------|---------------------------------|
-| Header    | `header_get_in_touch`      | “Get in Touch” → #contact       |
-| Header    | `header_resume_download`   | Resume link (also sends `resume_download` event) |
-| Header    | `header_linkedin`          | LinkedIn link                  |
-| Header    | `header_github`            | GitHub link                    |
-| Contact   | `contact_email`            | Email (mailto)                 |
-| Contact   | `contact_linkedin`        | LinkedIn card                  |
-| Contact   | `contact_github`           | GitHub card                    |
-| Footer    | `footer_linkedin`          | Footer LinkedIn                |
-| Footer    | `footer_github`            | Footer GitHub                  |
-| Footer    | `footer_facebook`          | Footer Facebook                |
-| Experience| `experience_tab`          | Tab switches (label: featured / all / enterprise) |
-| Patents   | `patents_google_patents`  | “Google Patents” link          |
+| Event name        | Location(s)   | Notes                                      |
+|-------------------|---------------|--------------------------------------------|
+| `get_in_touch`    | header        | “Get in Touch” → #contact                   |
+| `resume_download` | header        | Resume link                                 |
+| `linkedin_click`  | header, contact, footer | LinkedIn links                      |
+| `github_click`    | header, contact, footer | GitHub links                        |
+| `email_click`     | contact       | Email (mailto)                              |
+| `facebook_click`   | footer        | Footer Facebook                             |
+| `experience_tab`  | experience    | Tab switch (event_label: featured / all / enterprise) |
+| `patents_link`   | patents       | “Google Patents” link                       |
+| `scroll_depth`   | (automatic)   | Fired at 25%, 50%, 75%, 100% scroll (event_label / depth_percent = threshold) |
+| `section_view`   | (automatic)   | Fired when a section is first visible (event_label / section_id: philosophy, experience, achievements, patents, early_initiatives, education, skills, contact, footer) |
 
 If a button or link has very few or no events, visitors may be skipping it or ad-blockers may be blocking the GA script (see “Limitations” below).
 
@@ -117,10 +130,16 @@ If a button or link has very few or no events, visitors may be skipping it or ad
   - `isAnalyticsEnabled()` – whether GA is configured.  
   - `trackPageView(path, title?)` – send a page view.  
   - `trackEvent(name, params?)` – send a custom event.  
-  - `trackClick(label, { url?, location? })` – send a click event with category “engagement”.  
+  - `trackClick(eventName, { url?, location? })` – send an event with the given name (e.g. `get_in_touch`, `linkedin_click`) and category “engagement”.  
   - `trackResumeDownload(url?)` – send a `resume_download` event (used for the Resume button).
+  - `trackScrollDepth(percent)` – send a `scroll_depth` event (used by init).
+  - `initScrollDepthTracking(thresholds?)` – start scroll listener; fires one `scroll_depth` per threshold (default 25, 50, 75, 100). Called once from `App.tsx` on mount.
+  - `trackSectionView(sectionId)` – send a `section_view` event (used by init).
+  - `initSectionViewTracking()` – observe `[data-analytics-section]` sections; fire one `section_view` per section when 20% visible. Called once from `App.tsx` on mount.
 - **GA script injection:** `vite.config.ts` – plugin `inject-google-analytics` injects the GA4 script into the built HTML only when `VITE_GA_MEASUREMENT_ID` is set at build time.
 - **Initial page view:** `src/main.tsx` calls `trackPageView(...)` after the app mounts.
+- **Scroll depth:** `App.tsx` runs `initScrollDepthTracking()` once on mount.
+- **Section visibility:** `App.tsx` runs `initSectionViewTracking()` once on mount; sections use `data-analytics-section="..."` (see components).
 - **Components:** Header, Contact, Footer, Experience, and Patents call `trackClick` or `trackEvent` on relevant user actions.
 
 ---
@@ -132,9 +151,9 @@ If a button or link has very few or no events, visitors may be skipping it or ad
    ```ts
    import { trackClick } from '../utils/analytics';
    // ...
-   onClick={() => trackClick('unique_label', { location: 'section_name', url: optionalUrl })}
+   onClick={() => trackClick('event_name', { location: 'section_name', url: optionalUrl })}
    ```
-   Use a short, consistent `event_label` (e.g. `pricing_cta`, `nav_contact`).
+   Use a distinct event name (e.g. `get_in_touch`, `linkedin_click`, `patents_link`) so it appears as its own event in GA4.
 
 2. **Custom event (e.g. tab, filter):**  
    Use `trackEvent` from `src/utils/analytics.ts`:
@@ -154,6 +173,36 @@ After deploying, new events will show up in GA4 under **Engagement** → **Event
 - **Ad blockers:** Many users block `googletagmanager.com`. For them, no page views or events are sent. You cannot measure “blocked” users with client-side GA alone.
 - **Privacy:** GA is subject to your privacy policy and any consent requirements (e.g. GDPR). Consider a cookie/consent banner if you need to comply with strict consent rules.
 - **Single-page app:** The site is a single page; we send one page view on load. If you add routing, call `trackPageView` on route changes so GA reflects each “page.”
+
+---
+
+## Analytics coverage (what you have vs what’s optional)
+
+### Implemented on the site
+
+| What | How |
+|------|-----|
+| **Page views** | On load (path + title). |
+| **CTA / link clicks** | Distinct events: get_in_touch, resume_download, linkedin_click, github_click, email_click, facebook_click, experience_tab, patents_link. |
+| **Scroll depth** | One event per threshold (25%, 50%, 75%, 100%) when first reached. |
+| **Section visibility** | One `section_view` per section when it first becomes visible (philosophy, experience, achievements, patents, early_initiatives, education, skills, contact, footer). |
+
+### Provided by GA4 (no extra code)
+
+- **Traffic source** (UTM, referrer, campaign) – from URL and referrer.
+- **Device, browser, OS, country** – from user agent and IP.
+- **Engagement time** – GA4 measures active time on the page.
+- **New vs returning users** – from cookies.
+
+You can turn on **Enhanced measurement** in GA4 (Admin → Data streams → your stream → Enhanced measurement) for extra automatic events (e.g. scrolls, outbound clicks); some overlap with the custom events above.
+
+### Not implemented (and usually not needed)
+
+- **Form submissions** – You use mailto and links; no forms to submit.
+- **Video / audio plays** – Add if you embed media later.
+- **File download completion** – We track the resume *click*; actual save isn’t detectable client-side.
+- **Exit intent / before-unload** – Unreliable and often noisy; GA4 engagement time is usually enough.
+- **Search** – No search on a single-page profile.
 
 ---
 
