@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Philosophy from './components/Philosophy';
 import Experience from './components/Experience';
@@ -28,8 +29,14 @@ import {
   EarlyInitiativesData,
   Education as EducationType,
 } from './types';
+import { initScrollDepthTracking, initSectionViewTracking } from './utils/analytics';
 
 function App() {
+  useEffect(() => {
+    initScrollDepthTracking();
+    initSectionViewTracking();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Header profile={profileData as ProfileData} />

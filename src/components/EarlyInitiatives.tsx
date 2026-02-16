@@ -8,7 +8,7 @@ export default function EarlyInitiatives({ data }: EarlyInitiativesProps) {
   const { sectionTitle, sectionSubtitle, learningJourneyText, initiatives } = data;
 
   return (
-    <section className="py-16 px-6 bg-gray-50">
+    <section data-analytics-section="early_initiatives" className="py-16 px-6 bg-gray-50">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-8">
           <h2 className="text-3xl font-semibold mb-2">{sectionTitle}</h2>
