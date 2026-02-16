@@ -69,6 +69,16 @@ After the next successful deploy, the live site will send data to GA4. If the se
 
 Data can take a few minutes to appear in standard reports; Realtime is immediate.
 
+### How to see resume downloads
+
+Each time someone clicks the Resume button we send a dedicated event **`resume_download`**. To see how many people have (clicked to) download your resume:
+
+1. In GA4 go to **Reports** → **Engagement** → **Events**.
+2. Find the event **`resume_download`** in the table. The **Event count** is the number of times the resume link was clicked (which in most setups leads to a download).
+3. Optional: In **Explore**, create a report with **Event name** = `resume_download` to see trends over time or by date.
+
+Note: We track the *click* on the Resume link. Browsers may open the PDF in a new tab instead of downloading; in both cases the event is sent. Users with ad blockers may not be counted.
+
 ---
 
 ## What Is Tracked Automatically
@@ -85,7 +95,7 @@ All of these send a `click` event with `event_category: 'engagement'` and an `ev
 | Location   | Event label (examples)     | Notes                          |
 |-----------|----------------------------|---------------------------------|
 | Header    | `header_get_in_touch`      | “Get in Touch” → #contact       |
-| Header    | `header_resume_download`   | Resume download link           |
+| Header    | `header_resume_download`   | Resume link (also sends `resume_download` event) |
 | Header    | `header_linkedin`          | LinkedIn link                  |
 | Header    | `header_github`            | GitHub link                    |
 | Contact   | `contact_email`            | Email (mailto)                 |
@@ -107,7 +117,8 @@ If a button or link has very few or no events, visitors may be skipping it or ad
   - `isAnalyticsEnabled()` – whether GA is configured.  
   - `trackPageView(path, title?)` – send a page view.  
   - `trackEvent(name, params?)` – send a custom event.  
-  - `trackClick(label, { url?, location? })` – send a click event with category “engagement”.
+  - `trackClick(label, { url?, location? })` – send a click event with category “engagement”.  
+  - `trackResumeDownload(url?)` – send a `resume_download` event (used for the Resume button).
 - **GA script injection:** `vite.config.ts` – plugin `inject-google-analytics` injects the GA4 script into the built HTML only when `VITE_GA_MEASUREMENT_ID` is set at build time.
 - **Initial page view:** `src/main.tsx` calls `trackPageView(...)` after the app mounts.
 - **Components:** Header, Contact, Footer, Experience, and Patents call `trackClick` or `trackEvent` on relevant user actions.
