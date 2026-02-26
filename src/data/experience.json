@@ -3,19 +3,38 @@
         "role": "Principal Engineer",
         "company": "Intuit - Bangalore",
         "summary": "Pioneered transformative GenAI-driven code generation initiative for 8,000+ developers, fundamentally re-engineering the software development lifecycle. Architected and deployed cutting-edge AI solutions and automated workflows, achieving 50% productivity boost and drastically reducing time-to-market. Lead specialized team in exploring high-impact GenAI tools, fostering innovation and cross-functional excellence that has redefined developer efficiency at scale.",
-        "range": "September 2024 — Present"
+        "range": "September 2024 — Present",
+        "colorScheme": "green",
+        "featured": true,
+        "tags": ["GenAI", "Claude/ChatGPT", "Python", "Automation"],
+        "metrics": [
+            { "value": "8,000+", "label": "Developers Impacted" },
+            { "value": "50%", "label": "Productivity Boost" },
+            { "value": "1 Year", "label": "Time to Impact" }
+        ]
     },
     {
         "role": "Senior Software Development Engineer",
         "company": "Amazon India - Bangalore",
         "summary": "Led team of 30 SDEs developing MAARS, a mission-critical financial system for manifest ingestion, contractual accounting, and multi-billion-dollar reconciliation for Amazon Transportation. Spearheaded architectural redesign of Allocation System using Apache Beam, processing 1.5 billion daily transactions at 15,000 TPS. Migration reduced processing costs by 60%, delivering $600K in annual savings. Drove expansion of Amazon Global Mile business unit and launched ship-cost improvement platform providing actionable cost-reduction insights for leadership.",
-        "range": "February 2020 — September 2024"
+        "range": "February 2020 — September 2024",
+        "colorScheme": "orange",
+        "featured": true,
+        "tags": ["Java", "Apache Beam", "AWS", "Distributed Systems"],
+        "metrics": [
+            { "value": "$600K", "label": "Annual Savings" },
+            { "value": "1.5B", "label": "Transactions/Day" },
+            { "value": "30", "label": "Team Size" }
+        ]
     },
     {
         "role": "Computer Scientist - II (promoted from Computer Scientist)",
         "company": "Adobe India - Noida",
         "summary": "Progressive career spanning platform architecture and SDK development at Adobe. Led Gyarados platform for Adobe Experience Cloud serving millions; developed PDF Scan SDK with DRM, security, and compliance. Specialized in multi-cloud containerization, orchestration, and enterprise-grade document solutions.",
         "range": "July 2015 — February 2020",
+        "colorScheme": "red",
+        "featured": false,
+        "tags": ["Java", "Docker", "Azure", "Microservices"],
         "roles": [
             {
                 "title": "Computer Scientist - II",
@@ -33,18 +52,32 @@
         "role": "Software Engineer 2",
         "company": "Microsoft India - Hyderabad",
         "summary": "Architected and delivered end-to-end feature areas for Bing UX, serving as technical lead for major segment-wide initiatives from concept to deployment. Collaborated closely with design and product management to champion user experience, translating complex requirements into high-performance code and scalable technical designs. Subject matter expert navigating intricate technical challenges and driving engineering excellence across the segment, ensuring seamless and responsive interface for millions of users.",
-        "range": "December 2012 — June 2015"
+        "range": "December 2012 — June 2015",
+        "colorScheme": "blue",
+        "featured": false,
+        "tags": ["C#", "ASP.NET", "Bing"]
     },
     {
         "role": "Founder and Developer",
         "company": "myPNRstatus",
         "summary": "Founded and scaled myPNRstatus, innovative startup and automated SMS alert service streamlining travel experience for Indian Railway passengers. Engineered system delivering real-time updates on PNR status and train delays, eliminating manual tracking. As solo founder, grew platform to 600,000 unique users through organic adoption, demonstrating ability to build and manage high-traffic, user-centric products from ground up.",
-        "range": "November 2010 — November 2016"
+        "range": "November 2010 — November 2016",
+        "colorScheme": "purple",
+        "featured": true,
+        "badge": "Founder",
+        "tags": ["PHP", "MySQL", "SMS Gateway"],
+        "metrics": [
+            { "value": "600K", "label": "Unique Users" },
+            { "value": "6", "label": "Years Active" }
+        ]
     },
     {
         "role": "Software Engineer",
         "company": "CA Technology - Hyderabad",
         "summary": "Worked on EITM Software Service Desk providing Single Point of Contact (SPOC) to meet communications needs of both Users and IT, satisfying Customer and IT Provider objectives.",
-        "range": "June 2007 — December 2012"
+        "range": "June 2007 — December 2012",
+        "colorScheme": "gray",
+        "featured": false,
+        "tags": ["EITM", "Service Desk"]
     }
 ]
