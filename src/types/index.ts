@@ -4,12 +4,27 @@ export interface Role {
   summary: string;
 }
 
+export interface ExperienceMetric {
+  value: string;
+  label: string;
+}
+
 export interface Experience {
   role: string;
   company: string;
   summary: string;
   range: string;
   roles?: Role[]; // Optional: for consolidated experiences with career progression
+  /** Color scheme key (green | orange | red | blue | purple | gray) — drives gradients, tag colors, and metric colors */
+  colorScheme?: string;
+  /** Whether this experience appears in the Featured Roles tab */
+  featured?: boolean;
+  /** Optional badge label shown as a pill (e.g. "Founder") */
+  badge?: string;
+  /** Technology tags shown in the All Experience tab */
+  tags?: string[];
+  /** Key metrics shown in the Featured Roles card */
+  metrics?: ExperienceMetric[];
 }
 
 export interface Skill {

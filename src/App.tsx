@@ -33,8 +33,12 @@ import { initScrollDepthTracking, initSectionViewTracking } from './utils/analyt
 
 function App() {
   useEffect(() => {
-    initScrollDepthTracking();
-    initSectionViewTracking();
+    const cleanupScroll = initScrollDepthTracking();
+    const cleanupSections = initSectionViewTracking();
+    return () => {
+      cleanupScroll();
+      cleanupSections();
+    };
   }, []);
 
   return (

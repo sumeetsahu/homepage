@@ -84,11 +84,16 @@ export function trackScrollDepth(percent: number): void {
 }
 
 /**
- * Start listening for scroll and fire one scroll_depth event per threshold (e.g. 25, 50, 75, 100) when the user first reaches that depth.
- * Call once after the page is mounted (e.g. from App or main).
+ * Start listening for scroll and fire one scroll_depth event per threshold (e.g. 25, 50, 75, 100)
+ * when the user first reaches that depth.
+ *
+ * Call once after the page is mounted (e.g. in a useEffect).
+ * Returns a cleanup function — call it in the useEffect return to remove the listener.
  */
-export function initScrollDepthTracking(thresholds: number[] = DEFAULT_SCROLL_THRESHOLDS): void {
-  if (typeof document === 'undefined' || typeof window === 'undefined' || !isAnalyticsEnabled()) return;
+export function initScrollDepthTracking(thresholds: number[] = DEFAULT_SCROLL_THRESHOLDS): () => void {
+  if (typeof document === 'undefined' || typeof window === 'undefined' || !isAnalyticsEnabled()) {
+    return () => {};
+  }
   scrollDepthSent = new Set();
 
   let ticking = false;
@@ -100,7 +105,7 @@ export function initScrollDepthTracking(thresholds: number[] = DEFAULT_SCROLL_TH
     const clientHeight = doc.clientHeight;
     const scrollHeight = doc.scrollHeight;
     if (scrollHeight <= 0) return;
-    const depthPercent = Math.round((scrollTop + clientHeight) / scrollHeight * 100);
+    const depthPercent = Math.round(((scrollTop + clientHeight) / scrollHeight) * 100);
     maxDepth = Math.max(maxDepth, Math.min(depthPercent, 100));
 
     for (const threshold of thresholds) {
@@ -122,11 +127,16 @@ export function initScrollDepthTracking(thresholds: number[] = DEFAULT_SCROLL_TH
   window.addEventListener('scroll', onScroll, { passive: true });
   // Check once on load in case the page is short or already scrolled
   requestAnimationFrame(checkScroll);
+
+  return () => {
+    window.removeEventListener('scroll', onScroll);
+    scrollDepthSent = null;
+  };
 }
 
 let sectionViewSent: Set<string> | null = null;
 
-/** Send a section_view event when a section enters the viewport (for “which sections were seen”). */
+/** Send a section_view event when a section enters the viewport (for "which sections were seen"). */
 export function trackSectionView(sectionId: string): void {
   trackEvent('section_view', {
     event_category: 'engagement',
@@ -137,14 +147,19 @@ export function trackSectionView(sectionId: string): void {
 
 /**
  * Observe sections with data-analytics-section and fire section_view once when they become visible.
- * Call once after mount (e.g. from App). Sections: philosophy, experience, achievements, patents, early_initiatives, education, skills, contact, footer.
+ *
+ * Call once after mount (e.g. in a useEffect).
+ * Returns a cleanup function — call it in the useEffect return to disconnect the observer.
+ * Sections: philosophy, experience, achievements, patents, early_initiatives, education, skills, contact, footer.
  */
-export function initSectionViewTracking(): void {
-  if (typeof document === 'undefined' || typeof window === 'undefined' || !isAnalyticsEnabled()) return;
+export function initSectionViewTracking(): () => void {
+  if (typeof document === 'undefined' || typeof window === 'undefined' || !isAnalyticsEnabled()) {
+    return () => {};
+  }
   sectionViewSent = new Set();
 
   const elements = document.querySelectorAll<HTMLElement>('[data-analytics-section]');
-  if (elements.length === 0) return;
+  if (elements.length === 0) return () => {};
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -161,4 +176,9 @@ export function initSectionViewTracking(): void {
   );
 
   elements.forEach((el) => observer.observe(el));
+
+  return () => {
+    observer.disconnect();
+    sectionViewSent = null;
+  };
 }
